@@ -9,19 +9,19 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
 
   const estimate = useMemo(() => {
     if (!from || !to) return null;
-    const base = 35;
-    const len = (from.length + to.length) * 0.6;
-    return Math.round(base + len + pax * 3);
+    const base = 45;
+    const len = (from.length + to.length) * 0.5;
+    return Math.round(base + len + pax * 2);
   }, [from, to, pax]);
 
   return (
-    <div className={`bg-card/90 backdrop-blur-xl border border-border ${compact ? "p-6" : "p-8 md:p-10"} shadow-luxe`}>
+    <div className={`bg-card border border-border ${compact ? "p-6" : "p-8 md:p-10"} shadow-card rounded-md`}>
       <div className="flex items-center gap-3 mb-6">
-        <span className="gold-divider" />
-        <span className="text-xs uppercase tracking-[0.3em] text-gold">Réservation rapide</span>
+        <span className="hairline" />
+        <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Réservation rapide</span>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         <Field icon={<MapPin className="h-4 w-4" />} label="Adresse de départ">
           <input
             value={from}
@@ -53,7 +53,7 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
             className="w-full bg-transparent outline-none text-foreground"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-              <option key={n} value={n} className="bg-card">{n} passager{n > 1 ? "s" : ""}</option>
+              <option key={n} value={n}>{n} passager{n > 1 ? "s" : ""}</option>
             ))}
           </select>
         </Field>
@@ -61,14 +61,14 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
 
       <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-border">
         <div>
-          <div className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-1">Estimation</div>
-          <div className="text-3xl font-display text-gold">
+          <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-1">Estimation</div>
+          <div className="text-3xl font-display">
             {estimate ? `${estimate} €` : "—"}
           </div>
           <div className="text-xs text-muted-foreground mt-1">Prix fixe garanti, sans surprise</div>
         </div>
-        <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gold text-gold-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90 transition-all">
-          Réserver maintenant
+        <button className="group inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-ink text-ink-foreground text-xs uppercase tracking-[0.22em] hover:opacity-90 transition rounded-md">
+          Réserver
           <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
@@ -80,10 +80,10 @@ function Field({ icon, label, children }: { icon: React.ReactNode; label: string
   return (
     <label className="block group">
       <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2 flex items-center gap-2">
-        <span className="text-gold">{icon}</span>
+        {icon}
         {label}
       </div>
-      <div className="border-b border-border group-focus-within:border-gold transition-colors py-2">
+      <div className="border-b border-border group-focus-within:border-ink transition-colors py-2">
         {children}
       </div>
     </label>

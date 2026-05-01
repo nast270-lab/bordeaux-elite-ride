@@ -1,19 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-bordeaux.jpg";
-import chauffeurImg from "@/assets/chauffeur.jpg";
-import saintEmilionImg from "@/assets/saint-emilion.jpg";
 import { BookingForm } from "@/components/site/BookingForm";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import {
   Plane, Train, Briefcase, Clock, Map as MapIcon, Wine,
-  ShieldCheck, BadgeCheck, Star, Sparkles, Phone, ArrowRight,
+  ShieldCheck, BadgeCheck, Star, Phone, ArrowRight,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bordeaux Privilège — Chauffeur privé VTC à Bordeaux & Nouvelle-Aquitaine" },
-      { name: "description", content: "Votre chauffeur privé à Bordeaux. Transferts aéroport, gare, excursions Saint-Émilion, Arcachon. Prix fixes, 24h/24, véhicules premium." },
+      { title: "Bordeaux Privilège — Chauffeur privé VTC à Bordeaux" },
+      { name: "description", content: "Chauffeur privé à Bordeaux pour particuliers et professionnels. Transferts aéroport, gare, déplacements affaires. Prix fixes, 24h/24." },
     ],
   }),
   component: HomePage,
@@ -22,7 +19,7 @@ export const Route = createFileRoute("/")({
 const services = [
   { icon: Plane, title: "Transferts aéroport", desc: "Bordeaux-Mérignac, suivi des vols en temps réel." },
   { icon: Train, title: "Transferts gare", desc: "Gare Saint-Jean et toutes gares de la région." },
-  { icon: Briefcase, title: "Déplacements professionnels", desc: "Discrétion absolue pour vos rendez-vous d'affaires." },
+  { icon: Briefcase, title: "Déplacements professionnels", desc: "Discrétion et ponctualité pour vos rendez-vous." },
   { icon: Clock, title: "Mise à disposition", desc: "Chauffeur dédié à l'heure ou à la journée." },
   { icon: MapIcon, title: "Longue distance", desc: "France et Europe sur simple demande." },
   { icon: Wine, title: "Excursions œnotouristiques", desc: "Saint-Émilion, Médoc, Arcachon, Cap Ferret." },
@@ -30,125 +27,61 @@ const services = [
 
 const reasons = [
   { icon: BadgeCheck, title: "Prix fixes garantis", desc: "Tarif annoncé, tarif appliqué. Aucune surprise." },
-  { icon: Clock, title: "Disponible 24/7", desc: "Réservation à toute heure, tous les jours de l'année." },
-  { icon: ShieldCheck, title: "Chauffeurs d'élite", desc: "Formation rigoureuse, expérience et sens du service." },
-  { icon: Sparkles, title: "Véhicules premium", desc: "Flotte récente Mercedes, entretien irréprochable." },
-  { icon: Plane, title: "Suivi vols & trains", desc: "Adaptation en temps réel à vos horaires." },
-  { icon: ShieldCheck, title: "Paiement sécurisé", desc: "CB, virement, espèces. Facture professionnelle." },
+  { icon: Clock, title: "Disponible 24/7", desc: "Réservation à toute heure, tous les jours." },
+  { icon: ShieldCheck, title: "Chauffeurs qualifiés", desc: "Expérience, sens du service et discrétion." },
+  { icon: Briefcase, title: "Compte entreprise", desc: "Facturation mensuelle et reporting détaillé." },
 ];
 
 const testimonials = [
   { name: "Sophie L.", role: "Directrice marketing", text: "Service irréprochable depuis deux ans. Ponctualité et discrétion exemplaires." },
   { name: "Marc D.", role: "Chef d'entreprise", text: "Mes clients sont toujours impressionnés. Une véritable carte de visite." },
-  { name: "Claire B.", role: "Voyageuse", text: "Excursion à Saint-Émilion parfaite. Chauffeur passionné et professionnel." },
+  { name: "Claire B.", role: "Voyageuse", text: "Excursion à Saint-Émilion parfaite. Chauffeur attentionné et professionnel." },
 ];
 
 function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative -mt-20 min-h-[100vh] flex items-end overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Berline Mercedes devant la Place de la Bourse à Bordeaux"
-          className="absolute inset-0 w-full h-full object-cover"
-          width={1920}
-          height={1280}
-        />
-        <div className="absolute inset-0 bg-gradient-dark" />
-        <div className="absolute inset-0 bg-background/30" />
-
-        <div className="container-luxe relative z-10 pt-32 pb-20">
+      <section className="relative -mt-20 pt-32 pb-20 md:pt-40 md:pb-28 bg-pearl border-b border-border">
+        <div className="container-luxe">
           <div className="max-w-3xl animate-fade-up">
             <div className="flex items-center gap-3 mb-6">
-              <span className="gold-divider" />
-              <span className="text-xs uppercase tracking-[0.4em] text-gold">Chauffeur privé d'exception</span>
+              <span className="hairline" />
+              <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Chauffeur privé · Bordeaux</span>
             </div>
             <h1 className="text-5xl md:text-7xl leading-[1.05] mb-6">
-              Votre chauffeur privé à <span className="text-gradient-gold italic">Bordeaux</span> & en Nouvelle-Aquitaine
+              Le transport privé,<br/>simple et professionnel.
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed">
-              Transport premium, ponctualité absolue, discrétion et confort.
-              L'art du voyage à la française, à votre service.
+              Service de chauffeur privé à Bordeaux pour particuliers et professionnels.
+              Prix fixes, ponctualité, discrétion.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <Link
                 to="/reservation"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gold text-gold-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90 transition"
+                className="group inline-flex items-center gap-3 px-7 py-3.5 bg-ink text-ink-foreground text-xs uppercase tracking-[0.22em] hover:opacity-90 transition rounded-md"
               >
-                Réserver maintenant
+                Réserver
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 border border-border hover:border-gold text-xs uppercase tracking-[0.25em] transition"
+              <a
+                href="tel:+33600000000"
+                className="inline-flex items-center gap-3 px-7 py-3.5 border border-border bg-card hover:border-ink text-xs uppercase tracking-[0.22em] transition rounded-md"
               >
-                Obtenir un devis
-              </Link>
+                <Phone className="h-4 w-4" /> Nous appeler
+              </a>
             </div>
-          </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block">
-          <div className="h-12 w-px bg-gradient-to-b from-gold to-transparent animate-shimmer" />
-        </div>
-      </section>
-
-      {/* BOOKING */}
-      <section className="container-luxe -mt-24 relative z-20">
-        <BookingForm />
-      </section>
-
-      {/* SERVICES */}
-      <section className="container-luxe py-32">
-        <SectionHeading
-          eyebrow="Nos services"
-          title="Une prestation sur-mesure pour chaque trajet"
-          description="Particuliers ou professionnels, nous adaptons notre savoir-faire à toutes vos exigences."
-        />
-        <div className="mt-16 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-background p-10 group hover:bg-card transition-colors">
-              <Icon className="h-8 w-8 text-gold mb-6" strokeWidth={1.2} />
-              <h3 className="text-xl mb-3">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* WHY US — split */}
-      <section className="bg-card py-32">
-        <div className="container-luxe grid gap-16 lg:grid-cols-2 items-center">
-          <div className="relative">
-            <img
-              src={chauffeurImg}
-              alt="Chauffeur professionnel ouvrant la porte d'une berline"
-              className="w-full h-[600px] object-cover"
-              loading="lazy"
-              width={1280}
-              height={1600}
-            />
-            <div className="absolute -bottom-6 -right-6 bg-gold text-gold-foreground p-6 hidden md:block">
-              <div className="text-4xl font-display">15+</div>
-              <div className="text-xs uppercase tracking-[0.2em]">années d'expérience</div>
-            </div>
-          </div>
-          <div>
-            <SectionHeading
-              align="left"
-              eyebrow="Pourquoi nous choisir"
-              title="L'excellence comme standard, l'élégance comme signature"
-            />
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {reasons.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex gap-4">
-                  <Icon className="h-6 w-6 text-gold shrink-0 mt-1" strokeWidth={1.3} />
-                  <div>
-                    <div className="text-sm font-medium mb-1">{title}</div>
-                    <div className="text-xs text-muted-foreground leading-relaxed">{desc}</div>
-                  </div>
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
+              {[
+                { k: "24/7", v: "Disponibilité" },
+                { k: "Prix fixes", v: "Sans surprise" },
+                { k: "+15 ans", v: "Expérience" },
+                { k: "4.9/5", v: "Avis clients" },
+              ].map((s) => (
+                <div key={s.v}>
+                  <div className="text-2xl font-display">{s.k}</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{s.v}</div>
                 </div>
               ))}
             </div>
@@ -156,114 +89,134 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PRICING TEASER */}
-      <section className="container-luxe py-32">
+      {/* BOOKING */}
+      <section className="container-luxe -mt-12 md:-mt-16 relative z-20">
+        <BookingForm />
+      </section>
+
+      {/* SERVICES */}
+      <section className="container-luxe py-24 md:py-32">
         <SectionHeading
-          eyebrow="Tarifs indicatifs"
-          title="Des prix transparents et garantis"
-          description="Aucune mauvaise surprise. Le prix annoncé est le prix payé."
+          eyebrow="Nos services"
+          title="Une prestation adaptée à chaque trajet"
+          description="Particuliers ou professionnels, nous adaptons notre savoir-faire à toutes vos exigences."
         />
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            { route: "Bordeaux Centre → Aéroport Mérignac", price: 35 },
-            { route: "Bordeaux Centre → Gare Saint-Jean", price: 20 },
-            { route: "Bordeaux → Arcachon", price: 90 },
-            { route: "Bordeaux → Saint-Émilion", price: 95 },
-            { route: "Bordeaux → Cap Ferret", price: 110 },
-            { route: "Bordeaux → Médoc (vignobles)", price: 120 },
-          ].map((p) => (
-            <div key={p.route} className="border border-border p-8 hover:border-gold transition-colors group">
-              <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Trajet</div>
-              <div className="text-base mb-6 leading-snug">{p.route}</div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-xs text-muted-foreground">à partir de</span>
-                <span className="text-3xl font-display text-gold">{p.price} €</span>
-              </div>
+        <div className="mt-14 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border rounded-md overflow-hidden">
+          {services.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="bg-card p-8 hover:bg-muted/50 transition-colors">
+              <Icon className="h-6 w-6 text-ink mb-5" strokeWidth={1.4} />
+              <h3 className="text-lg mb-2">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
-        <div className="mt-12 text-center">
-          <Link
-            to="/tarifs"
-            className="inline-flex items-center gap-2 text-sm text-gold hover:underline"
-          >
-            Voir tous les tarifs <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
       </section>
 
-      {/* DESTINATIONS */}
-      <section className="relative py-32 overflow-hidden">
-        <img
-          src={saintEmilionImg}
-          alt="Vignobles de Saint-Émilion au coucher du soleil"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-          width={1280}
-          height={900}
-        />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="container-luxe relative z-10 text-center">
+      {/* WHY US */}
+      <section className="bg-card border-y border-border py-24 md:py-32">
+        <div className="container-luxe">
           <SectionHeading
-            eyebrow="Destinations privilégiées"
-            title="Découvrez la Nouvelle-Aquitaine avec élégance"
-            description="Nos chauffeurs vous emmènent à la découverte des plus beaux sites de la région."
+            eyebrow="Pourquoi nous choisir"
+            title="Un service pensé pour la performance"
           />
-          <div className="mt-12 flex flex-wrap justify-center gap-3">
-            {["Saint-Émilion", "Arcachon", "Cap Ferret", "Médoc", "Pessac-Léognan", "Sauternes", "Dune du Pilat", "Bassin d'Arcachon"].map((d) => (
-              <span key={d} className="px-5 py-2 border border-gold/40 text-sm text-foreground bg-background/40 backdrop-blur">
-                {d}
-              </span>
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {reasons.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="border border-border bg-background p-8 rounded-md">
+                <Icon className="h-6 w-6 text-ink mb-5" strokeWidth={1.4} />
+                <div className="text-base font-medium mb-2">{title}</div>
+                <div className="text-sm text-muted-foreground leading-relaxed">{desc}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="container-luxe py-32">
+      {/* PRICING TEASER */}
+      <section className="container-luxe py-24 md:py-32">
         <SectionHeading
-          eyebrow="Avis clients"
-          title="Ils nous ont confié leurs trajets"
+          eyebrow="Tarifs indicatifs"
+          title="Des prix transparents et garantis"
+          description="Le prix annoncé est le prix payé."
         />
-        <div className="mt-6 flex items-center justify-center gap-2">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="h-5 w-5 fill-gold text-gold" />
-          ))}
-          <span className="ml-3 text-sm text-muted-foreground">4.9/5 — basé sur 320 avis</span>
-        </div>
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="border border-border p-8 hover:border-gold transition-colors">
-              <div className="flex gap-1 mb-5">
-                {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-gold text-gold" />)}
+        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            { route: "Bordeaux Centre → Aéroport Mérignac", price: 45 },
+            { route: "Bordeaux Centre → Gare Saint-Jean", price: "—" },
+            { route: "Bordeaux → Arcachon", price: "—" },
+            { route: "Bordeaux → Saint-Émilion", price: "—" },
+            { route: "Bordeaux → Cap Ferret", price: "—" },
+            { route: "Bordeaux → Médoc", price: "—" },
+          ].map((p) => (
+            <div key={p.route} className="bg-card border border-border p-7 hover:border-ink/40 transition-colors rounded-md">
+              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-3">Trajet</div>
+              <div className="text-base mb-5 leading-snug">{p.route}</div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-xs text-muted-foreground">à partir de</span>
+                <span className="text-2xl font-display">
+                  {typeof p.price === "number" ? `${p.price} €` : <span className="text-muted-foreground/70">à venir</span>}
+                </span>
               </div>
-              <blockquote className="text-base leading-relaxed mb-6 italic font-display">
-                « {t.text} »
-              </blockquote>
-              <figcaption>
-                <div className="text-sm font-medium">{t.name}</div>
-                <div className="text-xs text-muted-foreground">{t.role}</div>
-              </figcaption>
-            </figure>
+            </div>
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link to="/tarifs" className="inline-flex items-center gap-2 text-sm text-ink hover:underline underline-offset-4">
+            Voir tous les tarifs <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-card border-t border-border py-24 md:py-32">
+        <div className="container-luxe">
+          <SectionHeading
+            eyebrow="Avis clients"
+            title="Ils nous ont confié leurs trajets"
+          />
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-4 w-4 fill-ink text-ink" />
+            ))}
+            <span className="ml-3 text-sm text-muted-foreground">4.9/5 — 320 avis</span>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure key={t.name} className="bg-background border border-border p-7 rounded-md">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-ink text-ink" />)}
+                </div>
+                <blockquote className="text-base leading-relaxed mb-5">
+                  « {t.text} »
+                </blockquote>
+                <figcaption>
+                  <div className="text-sm font-medium">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.role}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="container-luxe pb-32">
-        <div className="bg-card border border-border p-12 md:p-20 text-center">
-          <SectionHeading
-            eyebrow="À votre service"
-            title="Prêt à voyager autrement ?"
-            description="Réservez votre chauffeur privé en quelques clics, ou contactez-nous pour un devis personnalisé."
-          />
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link to="/reservation" className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-gold-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90">
-              Réserver en ligne <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a href="tel:+33600000000" className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold text-xs uppercase tracking-[0.25em] hover:bg-gold hover:text-gold-foreground transition-colors">
-              <Phone className="h-4 w-4" /> Nous appeler
-            </a>
+      <section className="container-luxe py-24 md:py-32">
+        <div className="bg-ink text-ink-foreground p-12 md:p-20 text-center rounded-md">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="hairline bg-ink-foreground" />
+              <span className="text-xs uppercase tracking-[0.3em] opacity-70">À votre service</span>
+              <span className="hairline bg-ink-foreground" />
+            </div>
+            <h2 className="text-4xl md:text-5xl mb-5 text-ink-foreground">Prêt à réserver votre trajet ?</h2>
+            <p className="opacity-80 mb-10">Réservation en ligne ou par téléphone, 24h/24.</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link to="/reservation" className="inline-flex items-center gap-3 px-7 py-3.5 bg-background text-foreground text-xs uppercase tracking-[0.22em] hover:opacity-90 rounded-md">
+                Réserver en ligne <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a href="tel:+33600000000" className="inline-flex items-center gap-3 px-7 py-3.5 border border-ink-foreground/30 text-ink-foreground text-xs uppercase tracking-[0.22em] hover:bg-ink-foreground/10 rounded-md">
+                <Phone className="h-4 w-4" /> Nous appeler
+              </a>
+            </div>
           </div>
         </div>
       </section>
