@@ -23,7 +23,7 @@ function ReservationPage() {
       <div className="mt-16 max-w-3xl mx-auto">
         <BookingForm />
         <p className="mt-8 text-center text-xs text-muted-foreground">
-          Une question ? Contactez-nous au <a href="tel:+33600000000" className="text-ink hover:underline">+33 6 00 00 00 00</a> — disponible 24h/24.
+          Une question ? Contactez-nous au <a href="tel:+33600000000" className="text-gold hover:underline">+33 6 00 00 00 00</a> — disponible 24h/24.
         </p>
       </div>
     </div>

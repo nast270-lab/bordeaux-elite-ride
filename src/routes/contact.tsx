@@ -57,13 +57,13 @@ function ContactPage() {
             { icon: Clock, title: "Disponibilité", value: "24 heures sur 24, 7 jours sur 7" },
           ].map(({ icon: Icon, title, value, href }) => (
             <div key={title} className="flex gap-5">
-              <div className="h-12 w-12 border border-border flex items-center justify-center shrink-0">
-                <Icon className="h-5 w-5 text-ink" strokeWidth={1.3} />
+              <div className="h-12 w-12 border border-gold/40 flex items-center justify-center shrink-0">
+                <Icon className="h-5 w-5 text-gold" strokeWidth={1.3} />
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">{title}</div>
                 {href ? (
-                  <a href={href} className="text-base text-foreground hover:opacity-70">{value}</a>
+                  <a href={href} className="text-base text-foreground hover:text-gold">{value}</a>
                 ) : (
                   <div className="text-base">{value}</div>
                 )}
@@ -74,7 +74,7 @@ function ContactPage() {
 
         <form onSubmit={onSubmit} className="lg:col-span-3 bg-card border border-border p-8 md:p-10 space-y-6">
           {status === "success" && (
-            <div className="p-4 border border-border bg-muted/40 text-sm text-foreground">
+            <div className="p-4 border border-gold/40 bg-gold/5 text-sm text-foreground">
               Merci, votre message a bien été envoyé. Nous vous répondons sous 24h.
             </div>
           )}
@@ -92,13 +92,13 @@ function ContactPage() {
                 name="message"
                 rows={6}
                 maxLength={1000}
-                className="w-full bg-transparent border-b border-border focus:border-ink outline-none py-2 resize-none text-foreground"
+                className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-2 resize-none text-foreground"
               />
             </label>
             {errors.message && <p className="text-xs text-destructive mt-2">{errors.message}</p>}
           </div>
 
-          <button className="inline-flex items-center gap-3 px-8 py-4 bg-ink text-ink-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90">
+          <button className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-gold-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90">
             Envoyer <Send className="h-4 w-4" />
           </button>
         </form>
@@ -116,7 +116,7 @@ function Field({ label, name, type = "text", error }: { label: string; name: str
           name={name}
           type={type}
           maxLength={255}
-          className="w-full bg-transparent border-b border-border focus:border-ink outline-none py-2 text-foreground"
+          className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-2 text-foreground"
         />
       </label>
       {error && <p className="text-xs text-destructive mt-2">{error}</p>}

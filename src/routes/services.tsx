@@ -34,10 +34,10 @@ function ServicesPage() {
 
       <div className="mt-20 grid gap-8 md:grid-cols-2">
         {services.map(({ icon: Icon, title, desc, points }) => (
-          <article key={title} className="border border-border p-10 hover:border-ink/40 transition-colors group">
+          <article key={title} className="border border-border p-10 hover:border-gold transition-colors group">
             <div className="flex items-start gap-6">
-              <div className="h-14 w-14 border border-border group-hover:border-ink/40 flex items-center justify-center shrink-0 transition-colors">
-                <Icon className="h-6 w-6 text-ink" strokeWidth={1.2} />
+              <div className="h-14 w-14 border border-gold/40 group-hover:border-gold flex items-center justify-center shrink-0 transition-colors">
+                <Icon className="h-6 w-6 text-gold" strokeWidth={1.2} />
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl mb-3">{title}</h3>
@@ -45,7 +45,7 @@ function ServicesPage() {
                 <ul className="space-y-2">
                   {points.map((p) => (
                     <li key={p} className="text-xs uppercase tracking-[0.15em] text-foreground/80 flex items-center gap-3">
-                      <span className="h-px w-6 bg-ink" /> {p}
+                      <span className="h-px w-6 bg-gold" /> {p}
                     </li>
                   ))}
                 </ul>

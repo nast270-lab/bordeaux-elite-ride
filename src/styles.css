@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
-  --radius-xl: calc(var(--radius) + 6px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -24,114 +24,127 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-ink: var(--ink);
-  --color-ink-foreground: var(--ink-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 
-  --shadow-soft: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.08);
-  --shadow-card: 0 1px 3px rgb(15 23 42 / 0.05), 0 20px 50px -25px rgb(15 23 42 / 0.12);
+  --shadow-luxe: 0 30px 80px -20px rgb(0 0 0 / 0.5);
+  --shadow-gold: 0 10px 40px -10px var(--gold);
 }
 
 @layer base {
   :root {
-    --radius: 0.375rem;
+    --radius: 0.25rem;
 
-    /* Pearl-white business palette */
-    --background: oklch(0.985 0.003 95);             /* nacre / pearl white */
-    --foreground: oklch(0.18 0.01 250);              /* deep ink */
+    /* Premium dark luxury palette */
+    --background: oklch(0.08 0.005 270);          /* near black */
+    --foreground: oklch(0.97 0.005 90);           /* warm off-white */
 
-    --card: oklch(1 0 0);                            /* pure white surface */
-    --card-foreground: oklch(0.18 0.01 250);
+    --card: oklch(0.11 0.008 270);
+    --card-foreground: oklch(0.97 0.005 90);
 
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.18 0.01 250);
+    --popover: oklch(0.11 0.008 270);
+    --popover-foreground: oklch(0.97 0.005 90);
 
-    --primary: oklch(0.18 0.01 250);                 /* ink primary */
-    --primary-foreground: oklch(0.985 0.003 95);
+    --primary: oklch(0.97 0.005 90);              /* light text on dark */
+    --primary-foreground: oklch(0.08 0.005 270);
 
-    --secondary: oklch(0.96 0.005 95);
-    --secondary-foreground: oklch(0.18 0.01 250);
+    --secondary: oklch(0.18 0.01 270);            /* anthracite */
+    --secondary-foreground: oklch(0.97 0.005 90);
 
-    --muted: oklch(0.96 0.004 95);
-    --muted-foreground: oklch(0.48 0.01 250);
+    --muted: oklch(0.15 0.008 270);
+    --muted-foreground: oklch(0.65 0.01 270);
 
-    --accent: oklch(0.94 0.008 240);
-    --accent-foreground: oklch(0.18 0.01 250);
+    --accent: oklch(0.22 0.02 250);               /* navy hint */
+    --accent-foreground: oklch(0.97 0.005 90);
 
-    /* Signature ink (replaces gold) */
-    --ink: oklch(0.22 0.012 250);
-    --ink-foreground: oklch(0.985 0.003 95);
+    /* Signature gold */
+    --gold: oklch(0.78 0.13 85);
+    --gold-foreground: oklch(0.08 0.005 270);
 
-    --destructive: oklch(0.55 0.2 25);
-    --destructive-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.6 0.22 25);
+    --destructive-foreground: oklch(0.97 0 0);
 
-    --border: oklch(0.91 0.005 250);
-    --input: oklch(0.94 0.005 250);
-    --ring: oklch(0.55 0.02 250);
+    --border: oklch(0.22 0.01 270);
+    --input: oklch(0.18 0.01 270);
+    --ring: oklch(0.78 0.13 85);
+
+    --gradient-gold: linear-gradient(135deg, oklch(0.85 0.14 85), oklch(0.7 0.12 75));
+    --gradient-dark: linear-gradient(180deg, oklch(0.08 0.005 270 / 0.4), oklch(0.05 0.005 270 / 0.95));
   }
 }
 
 @layer base {
   * { border-color: var(--color-border); }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "ss01", "cv11";
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: -0.02em;
-    color: var(--color-foreground);
   }
 }
 
 @layer utilities {
-  .text-ink { color: var(--ink); }
-  .bg-ink { background-color: var(--ink); }
-  .border-ink { border-color: var(--ink); }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
+  .border-gold { border-color: var(--gold); }
 
-  .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-card { box-shadow: var(--shadow-card); }
+  .bg-gradient-gold { background-image: var(--gradient-gold); }
+  .bg-gradient-dark { background-image: var(--gradient-dark); }
+
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-luxe { box-shadow: var(--shadow-luxe); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
 
   .container-luxe {
     width: 100%;
-    max-width: 1240px;
+    max-width: 1280px;
     margin-inline: auto;
     padding-inline: 1.5rem;
   }
 
-  .hairline {
-    width: 40px;
+  .gold-divider {
+    width: 60px;
     height: 1px;
-    background: var(--ink);
+    background: var(--gradient-gold);
   }
 
-  /* Subtle pearl backdrop */
-  .bg-pearl {
-    background:
-      radial-gradient(1200px 600px at 80% -10%, oklch(0.97 0.012 240 / 0.6), transparent 60%),
-      radial-gradient(900px 500px at 0% 100%, oklch(0.97 0.01 95 / 0.7), transparent 55%),
-      var(--background);
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out both;
   }
-
-  .animate-fade-up { animation: fade-up 0.7s ease-out both; }
 
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .animate-shimmer { animation: shimmer 3s ease-in-out infinite; }
 }

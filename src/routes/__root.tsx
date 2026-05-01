@@ -9,14 +9,14 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl">404</h1>
+        <h1 className="text-7xl text-gold">404</h1>
         <h2 className="mt-4 text-xl">Page introuvable</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           La page que vous cherchez n'existe pas ou a été déplacée.
         </p>
         <Link
           to="/"
-          className="inline-flex mt-6 items-center justify-center px-6 py-3 bg-ink text-ink-foreground text-xs uppercase tracking-[0.2em]"
+          className="inline-flex mt-6 items-center justify-center px-6 py-3 bg-gold text-gold-foreground text-xs uppercase tracking-[0.2em]"
         >
           Retour à l'accueil
         </Link>
@@ -43,7 +43,7 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" },
     ],
   }),
   shellComponent: RootShell,
