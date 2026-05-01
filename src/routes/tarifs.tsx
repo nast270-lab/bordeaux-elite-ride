@@ -13,13 +13,10 @@ export const Route = createFileRoute("/tarifs")({
 });
 
 const prices = [
-  { route: "Bordeaux Centre → Aéroport Mérignac", price: 35, time: "20 min" },
+  { route: "Bordeaux Centre → Aéroport Mérignac", price: 45, time: "20 min" },
   { route: "Bordeaux Centre → Gare Saint-Jean", price: 20, time: "10 min" },
   { route: "Bordeaux → Arcachon", price: 90, time: "1h00" },
-  { route: "Bordeaux → Saint-Émilion", price: 95, time: "45 min" },
   { route: "Bordeaux → Cap Ferret", price: 110, time: "1h15" },
-  { route: "Bordeaux → Médoc (vignobles)", price: 120, time: "1h00" },
-  { route: "Bordeaux → Sauternes", price: 130, time: "1h10" },
   { route: "Bordeaux → Dune du Pilat", price: 115, time: "1h00" },
   { route: "Bordeaux → Biarritz", price: 380, time: "2h15" },
 ];
