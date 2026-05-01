@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import berline from "@/assets/fleet-berline.jpg";
-import suv from "@/assets/fleet-suv.jpg";
-import van from "@/assets/fleet-van.jpg";
+import lynkco from "@/assets/fleet-lynkco.jpg";
+import prius7 from "@/assets/fleet-prius7.jpg";
+import yarisCross from "@/assets/fleet-yariscross.jpg";
 import { Users, Briefcase, Wifi, Snowflake } from "lucide-react";
 
 export const Route = createFileRoute("/flotte")({
   head: () => ({
     meta: [
-      { title: "Notre flotte premium — Bordeaux Privilège" },
-      { name: "description", content: "Berline, SUV, Van : découvrez notre flotte de véhicules Mercedes haut de gamme. Confort, élégance et discrétion." },
+      { title: "Notre flotte — Bordeaux Privilège" },
+      { name: "description", content: "Lynk & Co, Toyota Prius 7 places, Toyota Yaris Cross : une flotte hybride moderne pensée pour le confort business et professionnel." },
     ],
   }),
   component: FleetPage,
@@ -17,36 +17,36 @@ export const Route = createFileRoute("/flotte")({
 
 const fleet = [
   {
-    name: "Berline",
-    model: "Mercedes Classe E / Classe S",
-    img: berline,
+    name: "Lynk & Co",
+    model: "Lynk & Co 01 Hybride",
+    img: lynkco,
+    pax: "1-4 passagers",
+    bags: "4 bagages",
+    desc: "Un SUV hybride au design épuré et contemporain. Parfait pour vos déplacements business avec un confort silencieux et une conduite souple.",
+  },
+  {
+    name: "Toyota Prius 7 places",
+    model: "Toyota Prius+ Hybride",
+    img: prius7,
+    pax: "1-6 passagers",
+    bags: "6 bagages",
+    desc: "L'espace et la modularité d'un véhicule 7 places hybride. Idéal pour les groupes, familles et transferts professionnels en équipe.",
+  },
+  {
+    name: "Toyota Yaris Cross",
+    model: "Toyota Yaris Cross Hybride",
+    img: yarisCross,
     pax: "1-3 passagers",
     bags: "3 bagages",
-    desc: "L'élégance discrète d'une berline d'affaires. Idéale pour vos transferts et déplacements professionnels.",
-  },
-  {
-    name: "SUV",
-    model: "Mercedes GLE / Classe V",
-    img: suv,
-    pax: "1-5 passagers",
-    bags: "5 bagages",
-    desc: "Plus d'espace et de présence. Parfait pour familles ou trajets nécessitant un confort supérieur.",
-  },
-  {
-    name: "Van",
-    model: "Mercedes V-Class",
-    img: van,
-    pax: "1-7 passagers",
-    bags: "7 bagages",
-    desc: "L'espace d'une limousine pour groupes. Configuration salon, idéal événements et grandes familles.",
+    desc: "Un crossover compact et confortable, agile en centre-ville. Parfait pour les courses urbaines et les transferts express vers l'aéroport.",
   },
 ];
 
 const amenities = [
-  { icon: Wifi, label: "Wi-Fi gratuit" },
-  { icon: Snowflake, label: "Climatisation 4 zones" },
+  { icon: Wifi, label: "Wi-Fi à bord" },
+  { icon: Snowflake, label: "Climatisation" },
   { icon: Briefcase, label: "Eau & rafraîchissements" },
-  { icon: Users, label: "Sièges cuir premium" },
+  { icon: Users, label: "Confort premium" },
 ];
 
 function FleetPage() {
@@ -55,8 +55,8 @@ function FleetPage() {
       <div className="container-luxe">
         <SectionHeading
           eyebrow="Notre flotte"
-          title="Des véhicules à la hauteur de vos exigences"
-          description="Une flotte exclusivement Mercedes-Benz, récente et entretenue avec soin."
+          title="Confort, hybride et discrétion business"
+          description="Une flotte récente, hybride et entretenue avec soin, pensée pour vos trajets professionnels et personnels."
         />
       </div>
 

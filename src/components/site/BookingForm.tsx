@@ -9,7 +9,7 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
 
   const estimate = useMemo(() => {
     if (!from || !to) return null;
-    const base = 35;
+    const base = 45;
     const len = (from.length + to.length) * 0.6;
     return Math.round(base + len + pax * 3);
   }, [from, to, pax]);
