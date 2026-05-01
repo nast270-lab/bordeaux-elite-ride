@@ -32,7 +32,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Bordeaux Privilège — Chauffeur privé VTC à Bordeaux" },
       { name: "description", content: "Service de chauffeur privé haut de gamme à Bordeaux et en Nouvelle-Aquitaine. Transferts aéroport, gare, déplacements professionnels et excursions. Prix fixes, 24h/24." },
-      { name: "keywords", content: "chauffeur privé Bordeaux, VTC Bordeaux, transport privé Bordeaux, transfert aéroport Mérignac, chauffeur Saint-Émilion, VTC Arcachon" },
+      { name: "keywords", content: "chauffeur privé Bordeaux, VTC Bordeaux, transport privé Bordeaux, transfert aéroport Mérignac, VTC business Bordeaux, chauffeur professionnel Bordeaux" },
       { property: "og:title", content: "Bordeaux Privilège — Chauffeur privé VTC à Bordeaux" },
       { property: "og:description", content: "Transport premium à Bordeaux : ponctualité, discrétion et confort." },
       { property: "og:type", content: "website" },
