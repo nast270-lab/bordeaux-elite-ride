@@ -6,16 +6,16 @@ export function FloatingActions() {
       <a
         href="https://wa.me/33600000000"
         aria-label="WhatsApp"
-        className="h-14 w-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-luxe hover:scale-105 transition-transform"
+        className="h-13 w-13 h-[52px] w-[52px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-card hover:scale-105 transition-transform"
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-5 w-5" />
       </a>
       <a
         href="tel:+33600000000"
         aria-label="Appeler"
-        className="h-14 w-14 rounded-full bg-gold text-gold-foreground flex items-center justify-center shadow-gold hover:scale-105 transition-transform md:hidden"
+        className="h-[52px] w-[52px] rounded-full bg-ink text-ink-foreground flex items-center justify-center shadow-card hover:scale-105 transition-transform md:hidden"
       >
-        <Phone className="h-6 w-6" />
+        <Phone className="h-5 w-5" />
       </a>
     </div>
   );
