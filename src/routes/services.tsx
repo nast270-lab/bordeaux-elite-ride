@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { Plane, Train, Briefcase, Clock, Map as MapIcon, Building2, Heart, Users } from "lucide-react";
+import { Plane, Train, Briefcase, Map as MapIcon, Heart } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Nos services VTC — Bordeaux Privilège" },
-      { name: "description", content: "Transferts aéroport et gare, déplacements professionnels, mise à disposition, comptes entreprises. Tous nos services de chauffeur privé à Bordeaux." },
+      { name: "description", content: "Transferts aéroport et gare, trajets professionnels, longue distance, événements privés. Tous les services d'un chauffeur privé indépendant à Bordeaux." },
     ],
   }),
   component: ServicesPage,
@@ -15,11 +15,8 @@ export const Route = createFileRoute("/services")({
 const services = [
   { icon: Plane, title: "Transferts aéroport", desc: "Aéroport de Bordeaux-Mérignac et autres aéroports régionaux. Suivi des vols en temps réel, accueil personnalisé en zone d'arrivée avec pancarte nominative.", points: ["Suivi vol temps réel", "Accueil personnalisé", "Bagages assistés"] },
   { icon: Train, title: "Transferts gare", desc: "Gare de Bordeaux Saint-Jean et toutes les gares de Nouvelle-Aquitaine. Ponctualité garantie pour ne jamais manquer votre train.", points: ["Toutes gares SNCF", "Suivi des trains", "Service door-to-door"] },
-  { icon: Briefcase, title: "Déplacements professionnels", desc: "Pour vos rendez-vous d'affaires, séminaires ou roadshows. Discrétion totale, véhicules équipés, facturation entreprise.", points: ["Compte entreprise", "Facturation mensuelle", "Wi-Fi à bord"] },
-  { icon: Clock, title: "Mise à disposition", desc: "Un chauffeur dédié à l'heure, à la demi-journée ou à la journée complète. Idéal pour vos rendez-vous multiples ou journées chargées.", points: ["À l'heure ou journée", "Chauffeur dédié", "Itinéraire flexible"] },
+  { icon: Briefcase, title: "Trajets professionnels", desc: "Pour vos rendez-vous d'affaires, séminaires ou déplacements ponctuels. Discrétion totale, véhicule équipé, facture sur demande.", points: ["Facture sur demande", "Discrétion absolue", "Wi-Fi à bord"] },
   { icon: MapIcon, title: "Longue distance", desc: "Trajets longue distance partout en France et en Europe. Confort et sérénité pour vos voyages d'affaires ou privés.", points: ["France & Europe", "Pause sur demande", "Devis personnalisé"] },
-  { icon: Building2, title: "Comptes entreprises", desc: "Solution dédiée aux entreprises : facturation mensuelle, interlocuteur unique, suivi des trajets de vos collaborateurs.", points: ["Facturation mensuelle", "Interlocuteur dédié", "Reporting détaillé"] },
-  { icon: Users, title: "Roadshows & équipes", desc: "Transport coordonné de vos équipes pour roadshows, séminaires et événements professionnels. Plusieurs véhicules sur demande.", points: ["Multi-véhicules", "Coordination logistique", "Planning sur-mesure"] },
   { icon: Heart, title: "Événements privés", desc: "Cérémonie, gala, soirée. Service confort et discret avec chauffeur en tenue professionnelle.", points: ["Tenue professionnelle", "Service discret", "Devis personnalisé"] },
 ];
 
@@ -29,7 +26,7 @@ function ServicesPage() {
       <SectionHeading
         eyebrow="Nos prestations"
         title="Des services pensés pour les plus exigeants"
-        description="Chaque trajet est unique. Nous adaptons notre savoir-faire à vos besoins, qu'ils soient professionnels ou personnels."
+        description="Chaque trajet est unique. Particulier ou professionnel, votre déplacement est traité avec la même rigueur."
       />
 
       <div className="mt-20 grid gap-8 md:grid-cols-2">
