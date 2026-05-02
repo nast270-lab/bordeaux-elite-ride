@@ -38,7 +38,7 @@ const milestones = [
   { year: "2025", title: "Lancement", desc: "Un chauffeur, un véhicule, une exigence : la qualité de chaque trajet." },
   { year: "2026", title: "Second véhicule", desc: "Renfort d'un véhicule familial pour répondre à la demande croissante." },
   { year: "2027", title: "Équipe dédiée", desc: "Recrutement de chauffeurs partenaires sélectionnés selon nos standards." },
-  { year: "2028+", title: "Flotte complète", desc: "Une offre élargie — berline, SUV, van — au service des particuliers et professionnels." },
+  { year: "2028+", title: "Flotte complète", desc: "Une offre élargie — SUV, van, véhicule 7 places — au service des particuliers et professionnels." },
 ];
 
 const testimonials = [
@@ -109,7 +109,7 @@ function HomePage() {
           <div className="bg-gradient-to-br from-card to-background p-6 md:p-10 order-2 lg:order-1">
             <img
               src={suvImg}
-              alt="SUV berline hybride — Bordeaux Privilège"
+              alt="SUV hybride — Bordeaux Privilège"
               className="w-full h-auto object-contain"
               loading="lazy"
               width={1920}
@@ -125,7 +125,7 @@ function HomePage() {
               L'engagement personnel d'un <span className="text-gradient-gold italic">professionnel indépendant</span>
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-6">
-              Chauffeur indépendant basé à Bordeaux, je mets à votre disposition mon expérience et un SUV berline
+              Chauffeur indépendant basé à Bordeaux, je mets à votre disposition mon expérience et un SUV
               hybride récent, soigné et confortable. Chaque trajet est traité avec rigueur, ponctualité et discrétion.
             </p>
             <ul className="space-y-3 mb-8">

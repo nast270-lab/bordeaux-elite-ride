@@ -7,7 +7,7 @@ export const Route = createFileRoute("/flotte")({
   head: () => ({
     meta: [
       { title: "Notre véhicule — Bordeaux Privilège" },
-      { name: "description", content: "SUV berline hybride : un véhicule récent, soigné et confortable pour vos déplacements professionnels et personnels à Bordeaux." },
+      { name: "description", content: "SUV hybride : un véhicule récent, soigné et confortable pour vos déplacements professionnels et personnels à Bordeaux." },
     ],
   }),
   component: FleetPage,
@@ -26,7 +26,7 @@ function FleetPage() {
       <div className="container-luxe">
         <SectionHeading
           eyebrow="Notre véhicule"
-          title="Un SUV berline hybride, soigné et confortable"
+          title="Un SUV hybride moderne, soigné et confortable"
           description="Aujourd'hui, un seul véhicule pour une qualité de service maîtrisée. Demain, une flotte élargie avec la même exigence."
         />
       </div>
@@ -36,7 +36,7 @@ function FleetPage() {
           <div className="bg-gradient-to-br from-card to-background p-8">
             <img
               src={suvImg}
-              alt="SUV berline hybride — Bordeaux Privilège"
+              alt="SUV hybride — Bordeaux Privilège"
               className="w-full h-auto object-contain"
               loading="lazy"
               width={1920}
@@ -44,10 +44,10 @@ function FleetPage() {
             />
           </div>
           <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">SUV berline hybride</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">SUV hybride</div>
             <h3 className="text-4xl md:text-5xl mb-5">Confort & discrétion</h3>
             <p className="text-base text-muted-foreground leading-relaxed mb-8">
-              Un SUV berline hybride au design contemporain, idéal pour vos déplacements business
+              Un SUV hybride au design contemporain, idéal pour vos déplacements business
               comme pour vos trajets personnels. Habitacle silencieux, sièges enveloppants,
               conduite souple : chaque détail est pensé pour votre confort.
             </p>
