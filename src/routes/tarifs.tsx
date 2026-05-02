@@ -60,7 +60,7 @@ function PricingPage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground italic">
-            * Tarifs indicatifs pour 1 à 3 passagers en berline. Suppléments possibles : SUV, Van, course de nuit (22h-6h), jours fériés. Devis personnalisé sur demande.
+            * Tarifs indicatifs pour 1 à 3 passagers en SUV. Suppléments possibles : SUV, Van, course de nuit (22h-6h), jours fériés. Devis personnalisé sur demande.
           </p>
         </div>
 
