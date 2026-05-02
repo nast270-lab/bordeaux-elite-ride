@@ -26,7 +26,7 @@ function FleetPage() {
       <div className="container-luxe">
         <SectionHeading
           eyebrow="Notre véhicule"
-          title="Un SUV hybride, soigné et confortable"
+          title="Un SUV hybride moderne, soigné et confortable"
           description="Aujourd'hui, un seul véhicule pour une qualité de service maîtrisée. Demain, une flotte élargie avec la même exigence."
         />
       </div>
