@@ -61,6 +61,9 @@ function FleetPage() {
                 <div className="text-xl font-display text-gold">4 bagages</div>
               </div>
             </div>
+            <p className="text-xs text-muted-foreground italic mb-6">
+              Véhicule 7 places potentiellement disponible sur demande — nous consulter lors de la réservation.
+            </p>
             <ul className="grid grid-cols-2 gap-3">
               {amenities.map(({ icon: Icon, label }) => (
                 <li key={label} className="flex items-center gap-3 text-sm text-muted-foreground">

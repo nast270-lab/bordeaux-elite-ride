@@ -14,7 +14,6 @@ export const Route = createFileRoute("/tarifs")({
 
 const prices = [
   { route: "Bordeaux Centre → Aéroport Mérignac", price: 45, time: "20 min" },
-  { route: "Bordeaux Centre → Gare Saint-Jean", price: 20, time: "10 min" },
   { route: "Bordeaux → Arcachon", price: 90, time: "1h00" },
   { route: "Bordeaux → Cap Ferret", price: 110, time: "1h15" },
   { route: "Bordeaux → Dune du Pilat", price: 115, time: "1h00" },
