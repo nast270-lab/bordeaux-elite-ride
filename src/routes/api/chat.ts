@@ -11,7 +11,7 @@ Ton : professionnel, rassurant, premium, concis. Réponds en français, avec des
 export const Route = createFileRoute("/api/chat")({
   server: {
     handlers: {
-      POST: async ({ request }) => {
+      POST: async ({ request }: { request: Request }) => {
         try {
           const { messages } = await request.json();
           const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
