@@ -1,8 +1,9 @@
 import { Phone, MessageCircle } from "lucide-react";
+import { Chatbot } from "./Chatbot";
 
 export function FloatingActions() {
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-end">
       <a
         href="https://wa.me/33600000000"
         aria-label="WhatsApp"
@@ -17,6 +18,7 @@ export function FloatingActions() {
       >
         <Phone className="h-6 w-6" />
       </a>
+      <Chatbot />
     </div>
   );
 }
