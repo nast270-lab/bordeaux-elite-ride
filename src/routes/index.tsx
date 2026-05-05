@@ -130,7 +130,7 @@ function HomePage() {
             </p>
             <ul className="space-y-3 mb-8">
               {[
-                "Carte professionnelle VTC",
+                "Carte professionnelle de chauffeur",
                 "Assurance transport de personnes",
                 "Tenue soignée et véhicule impeccable",
                 "Interlocuteur unique, joignable directement",
