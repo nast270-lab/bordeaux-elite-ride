@@ -11,7 +11,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bordeaux Privilège — Chauffeur privé VTC à Bordeaux" },
+      { title: "Bordeaux Privilège — Chauffeur privé à Bordeaux" },
       { name: "description", content: "Chauffeur privé indépendant à Bordeaux. Transferts aéroport, gare et trajets professionnels. Prix fixes, ponctualité, véhicule SUV hybride confort." },
     ],
   }),
