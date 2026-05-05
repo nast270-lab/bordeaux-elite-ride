@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Bordeaux Privilège" },
-      { name: "description", content: "Contactez Bordeaux Privilège pour toute demande de devis ou information sur nos services VTC." },
+      { name: "description", content: "Contactez Bordeaux Privilège pour toute demande de devis ou information sur nos services de chauffeur privé." },
     ],
   }),
   component: ContactPage,

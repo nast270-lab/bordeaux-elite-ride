@@ -5,7 +5,7 @@ import { Plane, Train, Briefcase, Map as MapIcon, Heart } from "lucide-react";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Nos services VTC — Bordeaux Privilège" },
+      { title: "Nos services de chauffeur privé — Bordeaux Privilège" },
       { name: "description", content: "Transferts aéroport et gare, trajets professionnels, longue distance, événements privés. Tous les services d'un chauffeur privé indépendant à Bordeaux." },
     ],
   }),

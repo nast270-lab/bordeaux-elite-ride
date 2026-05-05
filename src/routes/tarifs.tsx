@@ -5,7 +5,7 @@ import { Check, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/tarifs")({
   head: () => ({
     meta: [
-      { title: "Tarifs VTC Bordeaux — Bordeaux Privilège" },
+      { title: "Tarifs chauffeur privé Bordeaux — Bordeaux Privilège" },
       { name: "description", content: "Tarifs fixes et transparents de notre service de chauffeur privé à Bordeaux. Aéroport, gare, excursions." },
     ],
   }),
