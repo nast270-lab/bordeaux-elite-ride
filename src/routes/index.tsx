@@ -3,6 +3,7 @@ import heroImg from "@/assets/hero-bordeaux.jpg";
 import suvImg from "@/assets/fleet-suv.jpg";
 import { BookingForm } from "@/components/site/BookingForm";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import ScrollExpandMedia from "@/components/site/ScrollExpandMedia";
 import {
   Plane, Train, Briefcase, Map as MapIcon, Clock,
   ShieldCheck, BadgeCheck, Star, Sparkles, Phone, ArrowRight,
@@ -50,8 +51,20 @@ const testimonials = [
 function HomePage() {
   return (
     <>
+      {/* IMMERSIVE HERO */}
+      <ScrollExpandMedia
+        mediaType="image"
+        mediaSrc={suvImg}
+        bgImageSrc={heroImg}
+        title="Bordeaux Privilège"
+        date="Chauffeur privé"
+        scrollToExpand="Faites défiler pour découvrir"
+        textBlend
+      />
+
       {/* HERO */}
-      <section className="relative -mt-20 min-h-[100vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[100vh] flex items-end overflow-hidden">
+
         <img
           src={heroImg}
           alt="Vue de Bordeaux à l'heure bleue"
