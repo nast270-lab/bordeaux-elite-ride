@@ -221,7 +221,6 @@ function HomePage() {
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             { route: "Bordeaux Centre → Aéroport Mérignac", price: 45 },
-            { route: "Bordeaux Centre → Gare Saint-Jean", price: 20 },
             { route: "Bordeaux → Arcachon", price: 90 },
             { route: "Bordeaux → Cap Ferret", price: 110 },
             { route: "Bordeaux → Dune du Pilat", price: 115 },
