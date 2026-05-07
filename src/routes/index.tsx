@@ -3,6 +3,7 @@ import heroImg from "@/assets/hero-bordeaux.jpg";
 import suvImg from "@/assets/fleet-suv.jpg";
 import { BookingForm } from "@/components/site/BookingForm";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import ScrollExpandMedia from "@/components/site/ScrollExpandMedia";
 import {
   Plane, Train, Briefcase, Map as MapIcon, Clock,
   ShieldCheck, BadgeCheck, Star, Sparkles, Phone, ArrowRight,
