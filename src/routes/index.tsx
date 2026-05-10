@@ -234,10 +234,11 @@ function HomePage() {
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
             { route: "Bordeaux Centre → Aéroport Mérignac", price: 45 },
-            { route: "Bordeaux → Arcachon", price: 90 },
-            { route: "Bordeaux → Cap Ferret", price: 110 },
-            { route: "Bordeaux → Dune du Pilat", price: 115 },
-            { route: "Bordeaux → Biarritz", price: 380 },
+            { route: "Bordeaux → Arcachon", price: 95 },
+            { route: "Bordeaux → Cap Ferret", price: 115 },
+            { route: "Bordeaux → Dune du Pilat", price: 120 },
+            { route: "Bordeaux → Saint-Émilion", price: 110 },
+            { route: "Bordeaux → Biarritz", price: 390 },
           ].map((p) => (
             <div key={p.route} className="border border-border p-8 hover:border-gold transition-colors group">
               <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Trajet</div>

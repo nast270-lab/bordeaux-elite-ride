@@ -13,6 +13,7 @@ export const Route = createFileRoute("/tarifs")({
 });
 
 const prices = [
+  { route: "Bordeaux Centre → Gare Saint-Jean", price: 20, time: "10 min" },
   { route: "Bordeaux Centre → Aéroport Mérignac", price: 45, time: "20 min" },
   { route: "Bordeaux → Arcachon", price: 95, time: "1h00" },
   { route: "Bordeaux → Cap Ferret", price: 115, time: "1h15" },
@@ -78,7 +79,7 @@ function PricingPage() {
           <div className="mt-16">
             <h3 className="text-2xl mb-3">Comparatif tarif au kilomètre</h3>
             <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
-              Notre positionnement se situe entre un taxi et un VTC classique : la qualité d'un service premium au juste prix. Tarifs indicatifs en journée, course standard.
+              Sur les courts trajets, notre tarif est comparable à celui d'un taxi. Dès 30 km, nous devenons plus compétitifs que les deux — qualité premium, prix maîtrisé. Tarifs indicatifs en journée, course standard.
             </p>
             <div className="border border-border rounded-lg overflow-hidden bg-card/40">
               <div className="grid grid-cols-4 text-xs uppercase tracking-[0.2em] text-muted-foreground bg-secondary/60">
