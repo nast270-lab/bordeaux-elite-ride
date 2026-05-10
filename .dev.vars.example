@@ -1,0 +1,20 @@
+# ========================================
+# VARIABLES D'ENVIRONNEMENT — DÉVELOPPEMENT LOCAL
+# ========================================
+# Copier ce fichier en .dev.vars (sans .example) puis remplir les valeurs.
+# .dev.vars est ignoré par git (ne JAMAIS commiter).
+#
+# En production : configurer ces variables via le dashboard Cloudflare
+# ou la commande : wrangler secret put NOM_DE_LA_VARIABLE
+
+# --- Twilio (SMS) ---
+# Récupérables sur https://console.twilio.com (Dashboard, en haut à droite)
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=your_auth_token_here
+
+# Numéro Twilio acheté (format E.164 international, ex: +33756123456)
+TWILIO_PHONE_NUMBER=+33XXXXXXXXX
+
+# Numéro perso du chauffeur (recevra les notifications de réservation)
+# Format E.164, ex: +33612345678 (PAS de 0 initial, indicatif obligatoire)
+OWNER_PHONE_NUMBER=+33XXXXXXXXX

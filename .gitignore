@@ -20,6 +20,12 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Env files (never commit)
+.env
+.env.*
+!.env.example
+!.dev.vars.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
