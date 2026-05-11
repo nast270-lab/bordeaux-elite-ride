@@ -5,7 +5,7 @@
 # .dev.vars est ignoré par git (ne JAMAIS commiter).
 #
 # En production : configurer ces variables dans le dashboard Cloudflare
-# Workers → Settings → Variables & Secrets
+# Pages → bordeaux-elite-ride → Settings → Environment variables
 
 # --- Twilio ---
 # Récupérables sur https://console.twilio.com (Dashboard → Account Info)
@@ -19,4 +19,4 @@ TWILIO_SENDER_ID=BdxPrivil
 # --- Numéros de téléphone ---
 # Numéro OnOff pro du chauffeur (reçoit les notifications de réservation)
 # Format E.164 obligatoire : +336XXXXXXXX ou +337XXXXXXXX
-OWNER_PHONE_NUMBER=+337XXXXXXXX
+OWNER_PHONE_NUMBER=+33644691032
