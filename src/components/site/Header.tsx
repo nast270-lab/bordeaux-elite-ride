@@ -54,11 +54,11 @@ export function Header() {
 
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+33600000000"
+            href="tel:+33644691032"
             className="flex items-center gap-2 text-sm text-foreground hover:text-gold transition-colors"
           >
             <Phone className="h-4 w-4" />
-            +33 6 00 00 00 00
+            +33 6 44 69 10 32
           </a>
           <Link
             to="/reservation"
@@ -90,8 +90,8 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <a href="tel:+33600000000" className="flex items-center gap-2 text-foreground">
-              <Phone className="h-4 w-4 text-gold" /> +33 6 00 00 00 00
+            <a href="tel:+33644691032" className="flex items-center gap-2 text-foreground">
+              <Phone className="h-4 w-4 text-gold" /> +33 6 44 69 10 32
             </a>
             <Link
               to="/reservation"

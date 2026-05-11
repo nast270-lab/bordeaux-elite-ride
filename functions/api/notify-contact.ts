@@ -2,6 +2,7 @@ interface Env {
   TWILIO_ACCOUNT_SID?: string;
   TWILIO_AUTH_TOKEN?: string;
   TWILIO_SENDER_ID?: string;
+  TWILIO_WHATSAPP_NUMBER?: string;
   OWNER_PHONE_NUMBER?: string;
 }
 
@@ -12,14 +13,29 @@ function normalizePhone(raw: string): string {
   return digits;
 }
 
-async function sendSMS(to: string, body: string, env: Env): Promise<void> {
+function toWhatsApp(phone: string): string {
+  if (phone.startsWith("whatsapp:")) return phone;
+  return "whatsapp:" + normalizePhone(phone);
+}
+
+async function sendMessage(to: string, body: string, env: Env): Promise<void> {
   const sid = env.TWILIO_ACCOUNT_SID;
   const token = env.TWILIO_AUTH_TOKEN;
-  const from = env.TWILIO_SENDER_ID ?? "BdxPrivil";
   if (!sid || !token) {
-    console.warn("[Twilio] Variables manquantes — SMS non envoyé");
+    console.warn("[Twilio] Variables manquantes — message non envoyé");
     return;
   }
+
+  const isWhatsApp = to.startsWith("whatsapp:");
+  if (isWhatsApp && !env.TWILIO_WHATSAPP_NUMBER) {
+    console.warn("[Twilio] TWILIO_WHATSAPP_NUMBER manquant — message WhatsApp ignoré");
+    return;
+  }
+
+  const from = isWhatsApp
+    ? env.TWILIO_WHATSAPP_NUMBER!
+    : (env.TWILIO_SENDER_ID ?? "BdxPrivil");
+
   const url = `https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`;
   const auth = "Basic " + btoa(`${sid}:${token}`);
   const resp = await fetch(url, {
@@ -46,30 +62,39 @@ export async function onRequestPost(context: {
     };
     const env = context.env;
     const ownerPhone = env.OWNER_PHONE_NUMBER ?? "";
+    const useWhatsApp = !!env.TWILIO_WHATSAPP_NUMBER;
 
-    const ownerSms = [
+    const ownerMsg = [
       "📩 Bordeaux Privilège — Nouveau message",
-      `De : ${data.name}`,
-      `Email : ${data.email}`,
-      data.phone ? `Tél : ${normalizePhone(data.phone)}` : null,
+      `👤 De : ${data.name}`,
+      `📧 Email : ${data.email}`,
+      data.phone ? `📱 Tél : ${normalizePhone(data.phone)}` : null,
       "---",
       String(data.message).slice(0, 300),
     ]
       .filter(Boolean)
       .join("\n");
 
-    if (ownerPhone) await sendSMS(ownerPhone, ownerSms, env);
+    if (ownerPhone) {
+      const ownerTo = useWhatsApp ? toWhatsApp(ownerPhone) : ownerPhone;
+      await sendMessage(ownerTo, ownerMsg, env);
+    }
 
     if (data.phone) {
-      const clientSms = [
-        "Bordeaux Privilège — Message reçu ✓",
+      const clientTo = useWhatsApp
+        ? toWhatsApp(data.phone)
+        : normalizePhone(data.phone);
+
+      const clientMsg = [
+        "✅ Bordeaux Privilège — Message reçu",
         `Bonjour ${data.name}, votre message a bien été transmis.`,
         "Nous vous répondons sous 24h.",
         ownerPhone ? `Contact direct : ${ownerPhone}` : null,
       ]
         .filter(Boolean)
         .join("\n");
-      await sendSMS(normalizePhone(data.phone), clientSms, env);
+
+      await sendMessage(clientTo, clientMsg, env);
     }
 
     return Response.json({ ok: true });

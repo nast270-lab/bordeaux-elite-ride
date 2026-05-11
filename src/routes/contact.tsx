@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from "lucide-react";
 import { z } from "zod";
 
 export const Route = createFileRoute("/contact")({
@@ -85,6 +85,12 @@ function ContactPage() {
               title: "Téléphone",
               value: "+33 6 44 69 10 32",
               href: "tel:+33644691032",
+            },
+            {
+              icon: MessageCircle,
+              title: "WhatsApp",
+              value: "Écrire sur WhatsApp",
+              href: "https://wa.me/33644691032",
             },
             {
               icon: Mail,

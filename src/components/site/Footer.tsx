@@ -45,7 +45,7 @@ export function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-[0.3em] text-gold mb-6">Contact</h4>
           <ul className="space-y-4 text-sm text-muted-foreground">
-            <li className="flex gap-3"><Phone className="h-4 w-4 text-gold mt-0.5 shrink-0" /><a href="tel:+33600000000" className="hover:text-gold">+33 6 00 00 00 00</a></li>
+            <li className="flex gap-3"><Phone className="h-4 w-4 text-gold mt-0.5 shrink-0" /><a href="tel:+33644691032" className="hover:text-gold">+33 6 44 69 10 32</a></li>
             <li className="flex gap-3"><Mail className="h-4 w-4 text-gold mt-0.5 shrink-0" /><a href="mailto:contact@bordeaux-privilege.fr" className="hover:text-gold">contact@bordeaux-privilege.fr</a></li>
             <li className="flex gap-3"><MapPin className="h-4 w-4 text-gold mt-0.5 shrink-0" /><span>Bordeaux, Gironde<br/>Nouvelle-Aquitaine</span></li>
           </ul>
@@ -58,7 +58,7 @@ export function Footer() {
             Réservation en ligne ou par téléphone, à toute heure.
           </p>
           <a
-            href="https://wa.me/33600000000"
+            href="https://wa.me/33644691032"
             className="inline-flex mt-4 items-center gap-2 text-sm text-gold hover:underline"
           >
             WhatsApp →

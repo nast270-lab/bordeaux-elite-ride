@@ -39,8 +39,8 @@ export function Chatbot() {
         const errMsg = resp.status === 429
           ? "Trop de demandes. Merci de patienter quelques secondes."
           : resp.status === 402
-          ? "Service momentanément indisponible. Contactez-nous au +33 6 00 00 00 00."
-          : "Désolé, une erreur est survenue. Vous pouvez nous joindre au +33 6 00 00 00 00.";
+          ? "Service momentanément indisponible. Contactez-nous au +33 6 44 69 10 32."
+          : "Désolé, une erreur est survenue. Vous pouvez nous joindre au +33 6 44 69 10 32.";
         setMessages((m) => [...m, { role: "assistant", content: errMsg }]);
         setLoading(false);
         return;

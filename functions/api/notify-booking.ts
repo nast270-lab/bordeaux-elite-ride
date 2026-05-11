@@ -2,6 +2,7 @@ interface Env {
   TWILIO_ACCOUNT_SID?: string;
   TWILIO_AUTH_TOKEN?: string;
   TWILIO_SENDER_ID?: string;
+  TWILIO_WHATSAPP_NUMBER?: string;
   OWNER_PHONE_NUMBER?: string;
 }
 
@@ -12,14 +13,29 @@ function normalizePhone(raw: string): string {
   return digits;
 }
 
-async function sendSMS(to: string, body: string, env: Env): Promise<void> {
+function toWhatsApp(phone: string): string {
+  if (phone.startsWith("whatsapp:")) return phone;
+  return "whatsapp:" + normalizePhone(phone);
+}
+
+async function sendMessage(to: string, body: string, env: Env): Promise<void> {
   const sid = env.TWILIO_ACCOUNT_SID;
   const token = env.TWILIO_AUTH_TOKEN;
-  const from = env.TWILIO_SENDER_ID ?? "BdxPrivil";
   if (!sid || !token) {
-    console.warn("[Twilio] Variables manquantes — SMS non envoyé");
+    console.warn("[Twilio] Variables manquantes — message non envoyé");
     return;
   }
+
+  const isWhatsApp = to.startsWith("whatsapp:");
+  if (isWhatsApp && !env.TWILIO_WHATSAPP_NUMBER) {
+    console.warn("[Twilio] TWILIO_WHATSAPP_NUMBER manquant — message WhatsApp ignoré");
+    return;
+  }
+
+  const from = isWhatsApp
+    ? env.TWILIO_WHATSAPP_NUMBER!
+    : (env.TWILIO_SENDER_ID ?? "BdxPrivil");
+
   const url = `https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`;
   const auth = "Basic " + btoa(`${sid}:${token}`);
   const resp = await fetch(url, {
@@ -60,32 +76,46 @@ export async function onRequestPost(context: {
     };
     const env = context.env;
     const ownerPhone = env.OWNER_PHONE_NUMBER ?? "";
+    const useWhatsApp = !!env.TWILIO_WHATSAPP_NUMBER;
 
-    const ownerSms = [
-      "🚗 Bordeaux Privilège — Nouvelle réservation",
-      `Trajet : ${data.from} → ${data.to}`,
-      `Date : ${formatDate(data.date)}`,
-      `Passagers : ${data.pax}`,
-      data.estimate ? `Estimation : ${data.estimate} €` : null,
+    const managerMsg = [
+      "🚨 Bordeaux Privilège — Nouvelle réservation !",
+      `📍 Départ : ${data.from}`,
+      `🏁 Destination : ${data.to}`,
+      `📅 Date : ${formatDate(data.date)}`,
+      `👥 Passagers : ${data.pax}`,
+      data.estimate ? `💶 Estimation : ${data.estimate} €` : null,
       data.clientPhone
-        ? `Client : ${normalizePhone(data.clientPhone)}`
+        ? `📱 Client : ${normalizePhone(data.clientPhone)}`
         : "Pas de tél client",
     ]
       .filter(Boolean)
       .join("\n");
 
-    if (ownerPhone) await sendSMS(ownerPhone, ownerSms, env);
+    if (ownerPhone) {
+      const ownerTo = useWhatsApp ? toWhatsApp(ownerPhone) : ownerPhone;
+      await sendMessage(ownerTo, managerMsg, env);
+    }
 
     if (data.clientPhone) {
-      const clientSms = [
-        "Bordeaux Privilège — Demande reçue ✓",
-        `Trajet ${data.from} → ${data.to} bien transmis.`,
+      const clientTo = useWhatsApp
+        ? toWhatsApp(data.clientPhone)
+        : normalizePhone(data.clientPhone);
+
+      const clientMsg = [
+        "✅ Bordeaux Privilège — Réservation confirmée !",
+        `📍 Départ : ${data.from}`,
+        `🏁 Destination : ${data.to}`,
+        `📅 Date : ${formatDate(data.date)}`,
+        `👥 Passagers : ${data.pax}`,
+        data.estimate ? `💶 Estimation : ${data.estimate} €` : null,
         "Votre chauffeur vous contacte sous 30 min.",
         ownerPhone ? `Contact direct : ${ownerPhone}` : null,
       ]
         .filter(Boolean)
         .join("\n");
-      await sendSMS(normalizePhone(data.clientPhone), clientSms, env);
+
+      await sendMessage(clientTo, clientMsg, env);
     }
 
     return Response.json({ ok: true });
