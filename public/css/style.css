@@ -611,6 +611,19 @@ em { font-style: italic; color: var(--gold); }
 .mt-2 { margin-top: 2rem; }
 .mb-4 { margin-bottom: 4rem; }
 
+/* ----- Map ----- */
+.map-wrap {
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 420px;
+  display: block;
+  filter: grayscale(30%) invert(5%);
+}
+
 /* ----- Price Calculator ----- */
 .calc-box {
   background: var(--bg-card);

@@ -3,44 +3,54 @@
     {
       triggers: ['bonjour', 'hello', 'salut', 'bonsoir', 'bj', 'hi'],
       text: 'Bonjour ! Je suis l\'assistant Bordeaux Privilège.\nComment puis-je vous aider ?',
-      replies: ['💰 Tarifs', '🚗 Réserver', '✈️ Aéroport', '📞 Contact'],
+      replies: ['💰 Tarifs', '🚗 Réserver', '✈️ Aéroport', '🧳 Bagages'],
     },
     {
       triggers: ['tarif', 'prix', 'coût', 'cout', 'combien', '2'],
-      text: 'Nos tarifs indicatifs :\n\n✈️ Aéroport Mérignac — dès 45 €\n🌊 Arcachon — dès 95 €\n🍷 Saint-Émilion — dès 55 €\n🏙️ Trajet urbain — dès 15 €\n🚆 Paris — dès 600 €\n\nUtilisez notre calculateur pour une estimation précise !',
+      text: 'Nos tarifs fixes :\n\n✈️ Bordeaux → Aéroport — 40 €\n🚉 Aéroport → Gare St Jean — 50 €\n🏘️ Aéroport → Andernos — 75 €\n🌊 Bordeaux → Arcachon — 120 €\n🍷 Bordeaux → St Émilion — 90 €\n⛵ Bordeaux → Cap Ferret — 130 €\n\nPrix fixes, aucune surprise.',
       replies: ['🧮 Calculateur', '🚗 Réserver', '📞 Contact'],
     },
     {
       triggers: ['réserver', 'reserver', 'réservation', 'reservation', 'course', 'book', '1'],
-      text: 'Pour réserver votre chauffeur, cliquez ci-dessous ou contactez-nous sur WhatsApp.',
+      text: 'Pour réserver votre chauffeur, cliquez ci-dessous ou contactez-nous directement sur WhatsApp.',
       link: { text: '→ Formulaire de réservation', href: '/reservation' },
       replies: ['💰 Tarifs', '📞 Contact'],
     },
     {
       triggers: ['aéroport', 'aeroport', 'mérignac', 'merignac', 'vol', 'avion', 'navette'],
-      text: '✈️ Navette aéroport Bordeaux-Mérignac disponible 24h/24.\n\nSuivi du vol en temps réel — en cas de retard, nous nous adaptons sans frais supplémentaires.\n\nTarif dès 45 €.',
-      replies: ['🚗 Réserver', '💰 Tous les tarifs', '📞 Contact'],
+      text: '✈️ Navette aéroport Bordeaux-Mérignac disponible 24h/24.\n\nSuivi du vol en temps réel, aide aux bagages incluse. En cas de retard, nous nous adaptons sans frais supplémentaires.\n\nTarif fixe : 40 €',
+      replies: ['🚗 Réserver', '🧳 Bagages', '📞 Contact'],
+    },
+    {
+      triggers: ['bagage', 'bagages', 'valise', 'aide', 'chargement', '🧳'],
+      text: '🧳 Aide aux bagages incluse sur toutes nos courses :\n\n• Chargement et déchargement\n• Véhicule spacieux (berline ou 7 places)\n• Aucun frais supplémentaire\n\nPour des bagages volumineux, précisez-le lors de la réservation.',
+      replies: ['🚗 Réserver', '💰 Tarifs', '📞 Contact'],
     },
     {
       triggers: ['contact', 'appeler', 'téléphone', 'telephone', 'numero', 'numéro', '3'],
-      text: '📞 +33 6 44 69 10 32\n💬 WhatsApp — 24h/24\n📧 contact@bordeaux-privilege.fr\n\nNous répondons sous 15 minutes.',
+      text: '📞 +33 6 44 69 10 32\n💬 WhatsApp — 24h/24\n📧 contact@bordeaux-privilege.fr\n\nRéponse garantie sous 15 minutes.',
       replies: ['🚗 Réserver', '💰 Tarifs'],
     },
     {
       triggers: ['calculer', 'calculateur', 'estimer', 'estimation', 'devis'],
-      text: 'Notre calculateur de tarif est disponible sur la page d\'accueil. Sélectionnez votre trajet pour une estimation instantanée !',
+      text: 'Notre calculateur de tarif est disponible sur la page d\'accueil. Sélectionnez votre trajet pour voir le prix instantanément !',
       link: { text: '→ Voir le calculateur', href: '/#pricing' },
       replies: ['🚗 Réserver', '📞 Contact'],
     },
     {
-      triggers: ['arcachon', 'bassin', 'cap ferret', 'capferret'],
-      text: '🌊 Bordeaux → Arcachon : dès 95 €\nCap Ferret, Dune du Pilat et toutes zones du Bassin — tarif sur demande.',
+      triggers: ['arcachon', 'bassin'],
+      text: '🌊 Bordeaux → Arcachon : 120 €\nCap Ferret : 130 €\nTous points du Bassin sur demande.',
       replies: ['🚗 Réserver', '📞 Contact'],
     },
     {
-      triggers: ['saint-émilion', 'saintemilion', 'saint emilion', 'vignoble', 'vin'],
-      text: '🍷 Bordeaux → Saint-Émilion : dès 55 €\nExcursions vignobles, visites privées — retour garanti.',
+      triggers: ['saint-émilion', 'saintemilion', 'saint emilion', 'emilion', 'vignoble', 'vin'],
+      text: '🍷 Bordeaux → Saint-Émilion : 90 €\nVisites vignobles, excursions privées disponibles.',
       replies: ['🚗 Réserver', '💰 Tous les tarifs'],
+    },
+    {
+      triggers: ['7 places', 'minivan', 'van', 'groupe', 'famille'],
+      text: '🚐 Véhicule 7 places disponible pour les groupes et familles.\n\nConfort identique à la berline, capacité étendue.\nTarif : +30% sur le prix de base.',
+      replies: ['🚗 Réserver', '💰 Tarifs', '📞 Contact'],
     },
   ];
 
@@ -56,6 +66,7 @@
     '✈️ Aéroport': 'aéroport',
     '📞 Contact': 'contact',
     '🧮 Calculateur': 'calculateur',
+    '🧳 Bagages': 'bagages',
   };
 
   function findResponse(text) {
@@ -153,6 +164,17 @@
     }, 900);
   }
 
+  function openChat(proactiveMsg) {
+    opened = true;
+    panel.classList.add('open');
+    btn.classList.add('active');
+    if (messagesEl.children.length === 0) {
+      const msg = proactiveMsg || 'Bonjour ! 👋 Je suis l\'assistant Bordeaux Privilège.\nComment puis-je vous aider ?';
+      botReply(msg, null, ['💰 Tarifs', '🚗 Réserver', '✈️ Aéroport', '🧳 Bagages']);
+    }
+    inputEl.focus();
+  }
+
   function handleInput(text) {
     if (!text.trim()) return;
     addMessage(text, 'user');
@@ -166,17 +188,13 @@
   }
 
   btn.addEventListener('click', () => {
-    opened = !opened;
-    panel.classList.toggle('open', opened);
-    btn.classList.toggle('active', opened);
-    if (opened && messagesEl.children.length === 0) {
-      botReply(
-        'Bonjour ! 👋 Je suis l\'assistant Bordeaux Privilège.\nComment puis-je vous aider ?',
-        null,
-        ['💰 Tarifs', '🚗 Réserver', '✈️ Aéroport', '📞 Contact']
-      );
+    if (opened) {
+      opened = false;
+      panel.classList.remove('open');
+      btn.classList.remove('active');
+    } else {
+      openChat();
     }
-    if (opened) inputEl.focus();
   });
 
   closeBtn.addEventListener('click', () => {
@@ -189,4 +207,14 @@
   inputEl.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') handleInput(inputEl.value);
   });
+
+  // Auto-popup après 35 secondes si le client n'a pas encore interagi
+  if (!sessionStorage.getItem('chatbot-seen')) {
+    setTimeout(() => {
+      if (!opened) {
+        sessionStorage.setItem('chatbot-seen', '1');
+        openChat('Bonjour 👋 Vous cherchez un chauffeur à Bordeaux ?\nJe peux vous donner un tarif en quelques secondes — quel est votre trajet ?');
+      }
+    }, 35000);
+  }
 })();
