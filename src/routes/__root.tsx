@@ -38,6 +38,8 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Bordeaux Privilège — Chauffeur privé à Bordeaux" },
+      { name: "twitter:description", content: "Transport premium à Bordeaux : ponctualité, discrétion et confort. Prix fixes garantis." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

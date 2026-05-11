@@ -1,0 +1,22 @@
+# ========================================
+# VARIABLES D'ENVIRONNEMENT — DÉVELOPPEMENT LOCAL
+# ========================================
+# Copier ce fichier en .dev.vars (sans .example) puis remplir les valeurs.
+# .dev.vars est ignoré par git (ne JAMAIS commiter).
+#
+# En production : configurer ces variables dans le dashboard Cloudflare
+# Workers → Settings → Variables & Secrets
+
+# --- Twilio ---
+# Récupérables sur https://console.twilio.com (Dashboard → Account Info)
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=your_auth_token_here
+
+# Expéditeur alphanumérique (max 11 caractères, pas d'espaces)
+# Apparaît comme nom de l'expéditeur sur le téléphone du client
+TWILIO_SENDER_ID=BdxPrivil
+
+# --- Numéros de téléphone ---
+# Numéro OnOff pro du chauffeur (reçoit les notifications de réservation)
+# Format E.164 obligatoire : +336XXXXXXXX ou +337XXXXXXXX
+OWNER_PHONE_NUMBER=+337XXXXXXXX

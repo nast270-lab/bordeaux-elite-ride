@@ -6,19 +6,19 @@ export const Route = createFileRoute("/tarifs")({
   head: () => ({
     meta: [
       { title: "Tarifs chauffeur privé Bordeaux — Bordeaux Privilège" },
-      { name: "description", content: "Tarifs fixes et transparents de notre service de chauffeur privé à Bordeaux. Aéroport, gare, excursions." },
+      { name: "description", content: "Tarifs fixes et transparents de notre service de chauffeur privé à Bordeaux. Aéroport, excursions, longue distance France & Europe." },
     ],
   }),
   component: PricingPage,
 });
 
-const prices = [
+const prices: { route: string; price: number | null; time: string }[] = [
   { route: "Bordeaux Centre → Aéroport Mérignac", price: 45, time: "20 min" },
   { route: "Bordeaux → Arcachon", price: 95, time: "1h00" },
   { route: "Bordeaux → Cap Ferret", price: 115, time: "1h15" },
   { route: "Bordeaux → Dune du Pilat", price: 120, time: "1h00" },
   { route: "Bordeaux → Saint-Émilion", price: 110, time: "45 min" },
-  { route: "Bordeaux → Biarritz", price: 390, time: "2h15" },
+  { route: "Longue distance — France & Europe", price: null, time: "selon trajet" },
 ];
 
 // Comparatif tarifaire indicatif (jour, course standard)
@@ -64,8 +64,12 @@ function PricingPage() {
                   <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">durée moyenne {p.time}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xs text-muted-foreground">à partir de</div>
-                  <div className="text-2xl font-display text-gold">{p.price} €</div>
+                  <div className="text-xs text-muted-foreground">
+                    {p.price !== null ? "à partir de" : "devis personnalisé"}
+                  </div>
+                  <div className="text-2xl font-display text-gold">
+                    {p.price !== null ? `${p.price} €` : "Sur devis"}
+                  </div>
                 </div>
               </div>
             ))}
@@ -78,7 +82,7 @@ function PricingPage() {
           <div className="mt-16">
             <h3 className="text-2xl mb-3">Comparatif tarif au kilomètre</h3>
             <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
-              Notre positionnement se situe entre un taxi et un VTC classique : la qualité d'un service premium au juste prix. Tarifs indicatifs en journée, course standard.
+              Sur les courts trajets, notre tarif est comparable à celui d'un taxi. Dès 30 km, nous devenons plus compétitifs que les deux — qualité premium, prix maîtrisé. Tarifs indicatifs en journée, course standard.
             </p>
             <div className="border border-border rounded-lg overflow-hidden bg-card/40">
               <div className="grid grid-cols-4 text-xs uppercase tracking-[0.2em] text-muted-foreground bg-secondary/60">

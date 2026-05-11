@@ -1,13 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-bordeaux.jpg";
 import suvImg from "@/assets/fleet-suv.jpg";
-import { BookingForm } from "@/components/site/BookingForm";
+import { BookingForm, type BookingPayload } from "@/components/site/BookingForm";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import ScrollExpandMedia from "@/components/site/ScrollExpandMedia";
 import {
   Plane, Train, Briefcase, Map as MapIcon, Clock,
   ShieldCheck, BadgeCheck, Star, Sparkles, Phone, ArrowRight,
 } from "lucide-react";
+
+async function notifyHomeBooking(data: BookingPayload): Promise<void> {
+  const resp = await fetch("/api/notify-booking", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!resp.ok) throw new Error(`notify-booking ${resp.status}`);
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,7 +122,7 @@ function HomePage() {
 
       {/* BOOKING */}
       <section className="container-luxe -mt-24 relative z-20">
-        <BookingForm />
+        <BookingForm onNotify={notifyHomeBooking} />
       </section>
 
       {/* CHAUFFEUR + VEHICULE */}
@@ -232,19 +241,24 @@ function HomePage() {
           description="Aucune mauvaise surprise. Le prix annoncé est le prix payé."
         />
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[
+          {([
             { route: "Bordeaux Centre → Aéroport Mérignac", price: 45 },
-            { route: "Bordeaux → Arcachon", price: 90 },
-            { route: "Bordeaux → Cap Ferret", price: 110 },
-            { route: "Bordeaux → Dune du Pilat", price: 115 },
-            { route: "Bordeaux → Biarritz", price: 380 },
-          ].map((p) => (
+            { route: "Bordeaux → Arcachon", price: 95 },
+            { route: "Bordeaux → Cap Ferret", price: 115 },
+            { route: "Bordeaux → Dune du Pilat", price: 120 },
+            { route: "Bordeaux → Saint-Émilion", price: 110 },
+            { route: "Longue distance — France & Europe", price: null },
+          ] as { route: string; price: number | null }[]).map((p) => (
             <div key={p.route} className="border border-border p-8 hover:border-gold transition-colors group">
               <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Trajet</div>
               <div className="text-base mb-6 leading-snug">{p.route}</div>
               <div className="flex items-baseline gap-2">
-                <span className="text-xs text-muted-foreground">à partir de</span>
-                <span className="text-3xl font-display text-gold">{p.price} €</span>
+                <span className="text-xs text-muted-foreground">
+                  {p.price !== null ? "à partir de" : "devis personnalisé"}
+                </span>
+                <span className="text-3xl font-display text-gold">
+                  {p.price !== null ? `${p.price} €` : "Sur devis"}
+                </span>
               </div>
             </div>
           ))}
@@ -301,7 +315,7 @@ function HomePage() {
             <Link to="/reservation" className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-gold-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90">
               Réserver en ligne <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href="tel:+33600000000" className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold text-xs uppercase tracking-[0.25em] hover:bg-gold hover:text-gold-foreground transition-colors">
+            <a href="tel:+33644691032" className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold text-xs uppercase tracking-[0.25em] hover:bg-gold hover:text-gold-foreground transition-colors">
               <Phone className="h-4 w-4" /> Nous appeler
             </a>
           </div>
