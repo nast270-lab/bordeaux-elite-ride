@@ -57,7 +57,7 @@
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
           </div>
-          <h3>VTC urbain</h3>
+          <h3>Transport urbain</h3>
           <p>Trajets en centre-ville et agglomération bordelaise. Confortable, rapide, ponctuel — la mobilité haut de gamme du quotidien.</p>
         </article>
 
@@ -82,7 +82,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.5 5.5L5 10l5.5 1.5L12 17l1.5-5.5L19 10l-5.5-1.5L12 3zM5 3v3M20 7v3M5 19v3M19 18v3"/></svg>
           </div>
           <h3>Événements privés</h3>
-          <p>Mariages, galas, soirées d'entreprise. Chauffeur en tenue, véhicule impeccable, service entièrement discret.</p>
+          <p>Galas, soirées d'entreprise, déplacements privés. Chauffeur en tenue, véhicule impeccable, service entièrement discret.</p>
         </article>
 
       </div>
@@ -141,17 +141,45 @@
   <section id="pricing" class="bg-alt">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Tarifs indicatifs</span>
-        <h2>Des prix transparents, garantis</h2>
-        <p>Le tarif annoncé est le tarif final. Aucune surprise, jamais.</p>
+        <span class="eyebrow">Calculateur de prix</span>
+        <h2>Votre tarif en un instant</h2>
+        <p>Sélectionnez votre trajet — le prix s'affiche immédiatement. Aucune surprise.</p>
       </div>
-      <div class="grid grid-3 reveal">
-        <div class="pricing-card"><div class="route">Urbain</div><div class="label">Trajet en centre-ville</div><div class="price"><small>À partir de</small>15 €</div></div>
-        <div class="pricing-card"><div class="route">Aéroport</div><div class="label">Bordeaux Centre → Mérignac</div><div class="price"><small>À partir de</small>45 €</div></div>
-        <div class="pricing-card"><div class="route">Bassin</div><div class="label">Bordeaux → Arcachon</div><div class="price"><small>À partir de</small>95 €</div></div>
-        <div class="pricing-card"><div class="route">Vignobles</div><div class="label">Bordeaux → Saint-Émilion</div><div class="price"><small>À partir de</small>110 €</div></div>
-        <div class="pricing-card"><div class="route">Longue distance</div><div class="label">France & Europe</div><div class="price"><small>Tarif</small>Sur devis</div></div>
-        <div class="pricing-card"><div class="route">Événement</div><div class="label">Mariage, gala, soirée</div><div class="price"><small>Tarif</small>Sur devis</div></div>
+      <div class="calc-box reveal">
+        <div class="calc-fields">
+          <div class="field">
+            <label for="calc-route">Type de trajet</label>
+            <select id="calc-route">
+              <option value="airport">Navette aéroport Mérignac</option>
+              <option value="arcachon">Bordeaux → Arcachon</option>
+              <option value="saintemilion">Bordeaux → Saint-Émilion</option>
+              <option value="urban">Trajet urbain (centre-ville)</option>
+              <option value="toulouse">Bordeaux → Toulouse</option>
+              <option value="biarritz">Bordeaux → Biarritz/Bayonne</option>
+              <option value="paris">Bordeaux → Paris</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="calc-vehicle">Véhicule</label>
+            <select id="calc-vehicle">
+              <option value="berline">Berline</option>
+              <option value="van">Van (+30%)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Trajet</label>
+            <div class="calc-toggle">
+              <button class="calc-toggle-btn active" data-value="single">Aller simple</button>
+              <button class="calc-toggle-btn" data-value="return">Aller-retour</button>
+            </div>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-price-label">Estimation</div>
+          <div class="calc-price" id="calc-price">45 €</div>
+          <p class="calc-note" id="calc-note">Prix fixe garanti — aucune surprise</p>
+          <a href="/reservation" class="btn btn-gold">Réserver ce trajet →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -206,7 +234,7 @@
     </div>
     <div class="footer-bottom">
       <p>© <span id="year"></span> Bordeaux Privilège. Tous droits réservés.</p>
-      <p>Carte VTC professionnelle — Assurance transport de personnes</p>
+      <p>Chauffeur professionnel — Assurance transport de personnes</p>
     </div>
   </div>
 </footer>
@@ -216,5 +244,7 @@
 </a>
 
 <script src="/js/main.js"></script>
+<script src="/js/calculator.js"></script>
+<script src="/js/chatbot.js"></script>
 </body>
 </html>
