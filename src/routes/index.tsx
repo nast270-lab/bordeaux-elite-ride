@@ -1,13 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-bordeaux.jpg";
 import suvImg from "@/assets/fleet-suv.jpg";
-import { BookingForm } from "@/components/site/BookingForm";
+import { BookingForm, type BookingPayload } from "@/components/site/BookingForm";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import ScrollExpandMedia from "@/components/site/ScrollExpandMedia";
 import {
   Plane, Train, Briefcase, Map as MapIcon, Clock,
   ShieldCheck, BadgeCheck, Star, Sparkles, Phone, ArrowRight,
 } from "lucide-react";
+
+async function notifyHomeBooking(data: BookingPayload): Promise<void> {
+  const resp = await fetch("/api/notify-booking", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!resp.ok) throw new Error(`notify-booking ${resp.status}`);
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,7 +122,7 @@ function HomePage() {
 
       {/* BOOKING */}
       <section className="container-luxe -mt-24 relative z-20">
-        <BookingForm />
+        <BookingForm onNotify={notifyHomeBooking} />
       </section>
 
       {/* CHAUFFEUR + VEHICULE */}
@@ -306,7 +315,7 @@ function HomePage() {
             <Link to="/reservation" className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-gold-foreground text-xs uppercase tracking-[0.25em] hover:opacity-90">
               Réserver en ligne <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href="tel:+33600000000" className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold text-xs uppercase tracking-[0.25em] hover:bg-gold hover:text-gold-foreground transition-colors">
+            <a href="tel:+33644691032" className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold text-xs uppercase tracking-[0.25em] hover:bg-gold hover:text-gold-foreground transition-colors">
               <Phone className="h-4 w-4" /> Nous appeler
             </a>
           </div>

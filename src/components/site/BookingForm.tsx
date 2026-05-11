@@ -1,8 +1,21 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, MapPin, Calendar, Users, Phone } from "lucide-react";
-import { notifyServer } from "@/lib/notify";
 
-export function BookingForm({ compact = false }: { compact?: boolean }) {
+export type BookingPayload = {
+  from: string;
+  to: string;
+  date?: string;
+  pax: number;
+  estimate?: number | null;
+  clientPhone?: string;
+};
+
+type Props = {
+  compact?: boolean;
+  onNotify?: (data: BookingPayload) => Promise<void>;
+};
+
+export function BookingForm({ compact = false, onNotify }: Props) {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [date, setDate] = useState("");
@@ -24,17 +37,16 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
     setLoading(true);
     setStatus(null);
     try {
-      await notifyServer({
-        data: {
-          type: "booking",
+      if (onNotify) {
+        await onNotify({
           from,
           to,
           date: date || undefined,
           pax,
           estimate,
           clientPhone: phone || undefined,
-        },
-      });
+        });
+      }
       setStatus("success");
     } catch {
       setStatus("error");
