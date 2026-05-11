@@ -25,7 +25,7 @@ function ContactPage() {
   const [status, setStatus] = useState<null | "success" | "error">(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget));
     const r = schema.safeParse(data);
@@ -36,8 +36,28 @@ function ContactPage() {
       return;
     }
     setErrors({});
-    setStatus("success");
-    e.currentTarget.reset();
+    setStatus(null);
+    try {
+      const resp = await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "contact",
+          name: r.data.name,
+          email: r.data.email,
+          phone: r.data.phone || undefined,
+          message: r.data.message,
+        }),
+      });
+      if (resp.ok) {
+        setStatus("success");
+        e.currentTarget.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -76,6 +96,11 @@ function ContactPage() {
           {status === "success" && (
             <div className="p-4 border border-gold/40 bg-gold/5 text-sm text-foreground">
               Merci, votre message a bien été envoyé. Nous vous répondons sous 24h.
+            </div>
+          )}
+          {status === "error" && (
+            <div className="p-4 border border-destructive/40 bg-destructive/5 text-sm text-destructive">
+              Une erreur est survenue. Réessayez ou appelez-nous directement.
             </div>
           )}
 
