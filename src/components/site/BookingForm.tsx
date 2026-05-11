@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, MapPin, Calendar, Users, Phone } from "lucide-react";
+import { notifyServer } from "@/lib/notify";
 
 export function BookingForm({ compact = false }: { compact?: boolean }) {
   const [from, setFrom] = useState("");
@@ -23,10 +24,8 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
     setLoading(true);
     setStatus(null);
     try {
-      const resp = await fetch("/api/notify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      await notifyServer({
+        data: {
           type: "booking",
           from,
           to,
@@ -34,9 +33,9 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
           pax,
           estimate,
           clientPhone: phone || undefined,
-        }),
+        },
       });
-      setStatus(resp.ok ? "success" : "error");
+      setStatus("success");
     } catch {
       setStatus("error");
     } finally {

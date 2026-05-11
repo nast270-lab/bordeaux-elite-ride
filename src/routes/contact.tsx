@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { z } from "zod";
+import { notifyServer } from "@/lib/notify";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -38,23 +39,17 @@ function ContactPage() {
     setErrors({});
     setStatus(null);
     try {
-      const resp = await fetch("/api/notify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      await notifyServer({
+        data: {
           type: "contact",
           name: r.data.name,
           email: r.data.email,
           phone: r.data.phone || undefined,
           message: r.data.message,
-        }),
+        },
       });
-      if (resp.ok) {
-        setStatus("success");
-        e.currentTarget.reset();
-      } else {
-        setStatus("error");
-      }
+      setStatus("success");
+      e.currentTarget.reset();
     } catch {
       setStatus("error");
     }
