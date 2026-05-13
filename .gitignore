@@ -2,6 +2,9 @@ node_modules/
 dist/
 .output/
 
+# Claude Code — dossiers internes (worktrees, sessions)
+.claude/
+
 # Env (never commit)
 .env
 .env.local

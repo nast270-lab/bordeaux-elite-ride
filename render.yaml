@@ -1,0 +1,32 @@
+# =============================================
+# Bordeaux Privilège — Configuration Render
+# =============================================
+# Ce fichier permet à Render de déployer le projet automatiquement.
+# Doc : https://render.com/docs/render-yaml-reference
+
+services:
+  - type: web
+    name: bordeaux-privilege
+    runtime: node
+    region: frankfurt        # serveur en Europe (le plus proche de Bordeaux)
+    plan: free               # gratuit pour démarrer — passer sur "starter" en prod
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health  # Render ping cette route pour vérifier que le serveur tourne
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # ⚠️ Les variables ci-dessous sont SENSIBLES.
+      # sync: false = Render ne les stocke pas ici, vous les entrez manuellement dans le dashboard.
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_NUMBER
+        sync: false
+      - key: MANAGER_PHONE
+        sync: false
+      - key: SITE_URL
+        sync: false
