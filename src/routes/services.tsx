@@ -7,7 +7,9 @@ export const Route = createFileRoute("/services")({
     meta: [
       { title: "Nos services de chauffeur privé — Bordeaux Privilège" },
       { name: "description", content: "Transferts aéroport et gare, trajets professionnels, longue distance, événements privés. Tous les services d'un chauffeur privé indépendant à Bordeaux." },
+      { property: "og:url", content: "https://bordeaux-privilege.fr/services" },
     ],
+    links: [{ rel: "canonical", href: "https://bordeaux-privilege.fr/services" }],
   }),
   component: ServicesPage,
 });

@@ -23,7 +23,9 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Bordeaux Privilège — Chauffeur privé à Bordeaux" },
       { name: "description", content: "Chauffeur privé indépendant à Bordeaux. Transferts aéroport, gare et trajets professionnels. Prix fixes, ponctualité, véhicule SUV hybride confort." },
+      { property: "og:url", content: "https://bordeaux-privilege.fr/" },
     ],
+    links: [{ rel: "canonical", href: "https://bordeaux-privilege.fr/" }],
   }),
   component: HomePage,
 });

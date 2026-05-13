@@ -7,7 +7,9 @@ export const Route = createFileRoute("/tarifs")({
     meta: [
       { title: "Tarifs chauffeur privé Bordeaux — Bordeaux Privilège" },
       { name: "description", content: "Tarifs fixes et transparents de notre service de chauffeur privé à Bordeaux. Aéroport, excursions, longue distance France & Europe." },
+      { property: "og:url", content: "https://bordeaux-privilege.fr/tarifs" },
     ],
+    links: [{ rel: "canonical", href: "https://bordeaux-privilege.fr/tarifs" }],
   }),
   component: PricingPage,
 });

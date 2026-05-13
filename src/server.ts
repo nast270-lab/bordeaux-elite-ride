@@ -9,6 +9,54 @@ interface Env {
   OWNER_PHONE_NUMBER?: string;
 }
 
+// In-memory rate limiter — 5 calls/min per IP on API routes
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+const API_RATE_LIMIT = 5;
+const API_RATE_WINDOW = 60_000;
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitStore.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitStore.set(ip, { count: 1, resetAt: now + API_RATE_WINDOW });
+    return true;
+  }
+  if (entry.count >= API_RATE_LIMIT) return false;
+  entry.count++;
+  return true;
+}
+
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "Content-Security-Policy": [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' data: https://fonts.gstatic.com",
+    "img-src 'self' data: blob:",
+    "connect-src 'self'",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+  ].join("; "),
+};
+
+function withSecurityHeaders(response: Response): Response {
+  const headers = new Headers(response.headers);
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    headers.set(key, value);
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 function normalizePhone(raw: string): string {
   const digits = raw.replace(/[\s\-.()]/g, "");
   if (/^0[67]\d{8}$/.test(digits)) return "+33" + digits.slice(1);
@@ -52,9 +100,15 @@ function formatDate(iso?: string): string {
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    const clientIp = request.headers.get("CF-Connecting-IP") ?? "unknown";
 
     // ── API: booking notification ─────────────────────────────────────────────
     if (request.method === "POST" && url.pathname === "/api/notify-booking") {
+      if (!checkRateLimit(clientIp)) {
+        return withSecurityHeaders(
+          Response.json({ ok: false, error: "Too many requests" }, { status: 429 }),
+        );
+      }
       try {
         const data = (await request.json()) as {
           from: string;
@@ -93,15 +147,22 @@ export default {
           await sendSMS(normalizePhone(data.clientPhone), clientSms, env);
         }
 
-        return Response.json({ ok: true });
+        return withSecurityHeaders(Response.json({ ok: true }));
       } catch (e) {
         console.error("[notify-booking]", e);
-        return Response.json({ ok: false, error: String(e) }, { status: 500 });
+        return withSecurityHeaders(
+          Response.json({ ok: false, error: String(e) }, { status: 500 }),
+        );
       }
     }
 
     // ── API: contact notification ─────────────────────────────────────────────
     if (request.method === "POST" && url.pathname === "/api/notify-contact") {
+      if (!checkRateLimit(clientIp)) {
+        return withSecurityHeaders(
+          Response.json({ ok: false, error: "Too many requests" }, { status: 429 }),
+        );
+      }
       try {
         const data = (await request.json()) as {
           name: string;
@@ -136,14 +197,17 @@ export default {
           await sendSMS(normalizePhone(data.phone), clientSms, env);
         }
 
-        return Response.json({ ok: true });
+        return withSecurityHeaders(Response.json({ ok: true }));
       } catch (e) {
         console.error("[notify-contact]", e);
-        return Response.json({ ok: false, error: String(e) }, { status: 500 });
+        return withSecurityHeaders(
+          Response.json({ ok: false, error: String(e) }, { status: 500 }),
+        );
       }
     }
 
     // ── TanStack Start SSR ────────────────────────────────────────────────────
-    return startHandler(request, env, ctx);
+    const response = await startHandler(request, env, ctx);
+    return withSecurityHeaders(response);
   },
 };

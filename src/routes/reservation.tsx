@@ -11,7 +11,9 @@ export const Route = createFileRoute("/reservation")({
         content:
           "Réservez votre chauffeur privé à Bordeaux en quelques clics. Estimation instantanée, prix fixes.",
       },
+      { property: "og:url", content: "https://bordeaux-privilege.fr/reservation" },
     ],
+    links: [{ rel: "canonical", href: "https://bordeaux-privilege.fr/reservation" }],
   }),
   component: ReservationPage,
 });

@@ -13,7 +13,9 @@ export const Route = createFileRoute("/contact")({
         content:
           "Contactez Bordeaux Privilège pour toute demande de devis ou information sur nos services de chauffeur privé.",
       },
+      { property: "og:url", content: "https://bordeaux-privilege.fr/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://bordeaux-privilege.fr/contact" }],
   }),
   component: ContactPage,
 });

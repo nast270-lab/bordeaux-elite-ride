@@ -8,7 +8,9 @@ export const Route = createFileRoute("/flotte")({
     meta: [
       { title: "Notre véhicule — Bordeaux Privilège" },
       { name: "description", content: "SUV hybride : un véhicule récent, soigné et confortable pour vos déplacements professionnels et personnels à Bordeaux." },
+      { property: "og:url", content: "https://bordeaux-privilege.fr/flotte" },
     ],
+    links: [{ rel: "canonical", href: "https://bordeaux-privilege.fr/flotte" }],
   }),
   component: FleetPage,
 });
