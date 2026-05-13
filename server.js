@@ -12,11 +12,36 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Rate-limit : 20 requêtes / 15 min par IP sur les routes API et webhook
+// ── Sécurité : désactiver fingerprinting Express ──────────────────────────────
+app.disable("x-powered-by");
+
+// ── Headers de sécurité HTTP ──────────────────────────────────────────────────
+app.use((_req, res, next) => {
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-XSS-Protection", "1; mode=block");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  res.setHeader(
+    "Content-Security-Policy",
+    [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "img-src 'self' data: https://images.pexels.com",
+      "connect-src 'self'",
+      "frame-src 'none'",
+    ].join("; ")
+  );
+  next();
+});
+
+// ── Rate-limit : 20 requêtes / 15 min par IP sur les routes API ──────────────
 const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 20,
-  standardHeaders: true,  // renvoie les headers RateLimit-* standard
+  standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Trop de requêtes, réessayez dans quelques minutes." },
 });
@@ -24,7 +49,17 @@ const apiLimiter = rateLimit({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "public"), { extensions: ["html"] }));
+// ── Fichiers statiques avec cache 7 jours ─────────────────────────────────────
+app.use(express.static(path.join(__dirname, "public"), {
+  extensions: ["html"],
+  setHeaders(res, filePath) {
+    if (/\.(css|js|woff2?|png|jpe?g|webp|svg|ico)$/i.test(filePath)) {
+      res.setHeader("Cache-Control", "public, max-age=604800, immutable");
+    } else if (/\.html$/.test(filePath)) {
+      res.setHeader("Cache-Control", "no-cache");
+    }
+  },
+}));
 
 app.use("/api/booking", apiLimiter, bookingRoute);
 app.use("/api/contact", apiLimiter, contactRoute);

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bordeaux-privilege.fr/sitemap.xml
