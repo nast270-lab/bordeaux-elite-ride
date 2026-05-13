@@ -7,14 +7,44 @@
 # En production : variables configurées dans Cloudflare Pages
 # Pages → bordeaux-elite-ride → Settings → Environment variables
 
-# --- Twilio ---
+# ── Twilio (SMS) ─────────────────────────────────────────────────────────────
 # Récupérables sur https://console.twilio.com (Dashboard → Account Info)
 TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 TWILIO_AUTH_TOKEN=your_auth_token_here
 
-# Expéditeur alphanumérique (max 11 caractères, pas d'espaces)
+# Expéditeur alphanumérique pour les SMS (max 11 caractères, pas d'espaces)
 TWILIO_SENDER_ID=BdxPrivil
 
-# --- Numéros de téléphone ---
+# ── Twilio (WhatsApp) ─────────────────────────────────────────────────────────
+# Numéro Twilio activé pour WhatsApp (format E.164 : +14155238886 pour le sandbox)
+# Sandbox : https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn
+# Production : activer WhatsApp Sender dans la console Twilio puis soumettre à Meta
+# Laisser vide pour désactiver les notifications WhatsApp
+TWILIO_WHATSAPP_FROM=+14155238886
+
+# Webhook auto-reply WhatsApp :
+# Configurer dans Twilio → WhatsApp Sender → Webhook (A message comes in) :
+# https://bordeaux-privilege.fr/api/whatsapp-webhook
+# Méthode : HTTP POST
+
+# ── Numéros de téléphone ──────────────────────────────────────────────────────
 # Format E.164 obligatoire : +336XXXXXXXX ou +337XXXXXXXX
 OWNER_PHONE_NUMBER=+33644691032
+
+# ── Email propriétaire (Resend) ───────────────────────────────────────────────
+# Email du propriétaire — reçoit les notifications de réservation et contact
+OWNER_EMAIL=contact@bordeaux-privilege.fr
+
+# Clé API Resend : https://resend.com → API Keys → Create API Key
+# Domaine d'envoi à vérifier dans Resend → Domains → Add Domain
+# Free tier : 3 000 emails/mois, 100/jour
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Adresse d'expédition (doit correspondre à un domaine vérifié dans Resend)
+RESEND_FROM_EMAIL=Bordeaux Privilège <noreply@bordeaux-privilege.fr>
+
+# ── Chatbot IA (Claude) ───────────────────────────────────────────────────────
+# Clé API Anthropic : https://console.anthropic.com → API Keys
+# Modèle utilisé : claude-haiku-4-5 (rapide et économique pour un chatbot)
+# Coût indicatif : ~0,001 $ par conversation
+ANTHROPIC_API_KEY=sk-ant-api03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
