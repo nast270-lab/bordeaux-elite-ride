@@ -270,7 +270,7 @@ em { font-style: italic; color: var(--gold); }
   position: absolute;
   inset: 0;
   /* Photo SUV luxe sans marque - Pexels libre de droits */
-  background: url("https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop") center/cover no-repeat;
+  background: url("https://images.pexels.com/photos/1719648/pexels-photo-1719648.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop") center/cover no-repeat;
   z-index: 0;
 }
 
