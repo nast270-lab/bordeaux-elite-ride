@@ -269,7 +269,8 @@ em { font-style: italic; color: var(--gold); }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("/assets/hero.jpg") center/cover no-repeat;
+  /* Photo SUV luxe sans marque - Pexels libre de droits */
+  background: url("https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop") center/cover no-repeat;
   z-index: 0;
 }
 

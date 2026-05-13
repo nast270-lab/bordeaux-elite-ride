@@ -1,5 +1,30 @@
 // Shared interactions for all pages.
 
+// Injecte les coordonnées depuis window.BP_CONFIG (défini dans config.js)
+function applyPhoneConfig() {
+  const cfg = window.BP_CONFIG;
+  if (!cfg) return;
+
+  // Liens tel:
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+    el.href = 'tel:' + cfg.phoneTel;
+    if (el.textContent.trim().startsWith('+')) {
+      el.textContent = cfg.phoneDisplay;
+    }
+  });
+
+  // Liens WhatsApp (wa.me)
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
+    el.href = 'https://wa.me/' + cfg.phoneRaw;
+  });
+
+  // Placeholder du champ téléphone dans le formulaire de réservation
+  var telInput = document.querySelector('input[type="tel"][placeholder]');
+  if (telInput) telInput.placeholder = cfg.phoneDisplay;
+}
+
+applyPhoneConfig();
+
 (function () {
   const header = document.getElementById('header');
   const toggle = document.getElementById('nav-toggle');
