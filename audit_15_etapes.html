@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Audit Complet — France Confort Isolation — 15 Étapes</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.65;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    width: 100%;
+    min-height: 297mm;
+    background: linear-gradient(150deg, #0f3460 0%, #16213e 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 70px;
+    page-break-after: always;
+  }
+
+  .cover-badge {
+    background: rgba(255,165,0,0.18);
+    border: 1px solid rgba(255,165,0,0.5);
+    color: #ffa500;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 4px;
+    margin-bottom: 48px;
+    display: inline-block;
+  }
+
+  .cover h1 {
+    font-size: 36pt;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .cover h1 span { color: #ffa500; }
+
+  .cover-sub {
+    font-size: 15pt;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+
+  .cover-line {
+    width: 64px;
+    height: 4px;
+    background: #ffa500;
+    margin-bottom: 50px;
+    border-radius: 2px;
+  }
+
+  .cover-info {
+    background: rgba(255,255,255,0.06);
+    border-left: 4px solid #ffa500;
+    padding: 20px 26px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 16px;
+  }
+
+  .cover-info .ci-label {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .cover-info .ci-value {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .cover-info .ci-url {
+    font-size: 9pt;
+    color: #ffa500;
+    margin-top: 2px;
+  }
+
+  .cover-meta {
+    margin-top: 60px;
+    display: flex;
+    gap: 48px;
+  }
+
+  .cover-meta-item {
+    color: rgba(255,255,255,0.45);
+    font-size: 9pt;
+  }
+
+  .cover-meta-item strong {
+    display: block;
+    color: rgba(255,255,255,0.9);
+    font-size: 10.5pt;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  /* ─── PAGES ─── */
+  @page { size: A4; margin: 18mm 18mm 20mm 18mm; }
+
+  .page-break { page-break-before: always; }
+
+  /* ─── STEP HEADER ─── */
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 2.5px solid #0f3460;
+  }
+
+  .step-num {
+    min-width: 44px;
+    height: 44px;
+    background: #0f3460;
+    color: #ffa500;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14pt;
+    flex-shrink: 0;
+  }
+
+  .step-titles {}
+
+  .step-title {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #0f3460;
+    line-height: 1.2;
+  }
+
+  .step-subtitle {
+    font-size: 9pt;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* ─── CONTENT BLOCKS ─── */
+  .block {
+    margin-bottom: 18px;
+  }
+
+  .block-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #c0392b;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .block-title.blue { color: #0f3460; }
+
+  .block-content {
+    padding-left: 0;
+  }
+
+  /* ─── PROBLEM ITEMS ─── */
+  .problem-list, .action-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .problem-list li {
+    padding: 9px 12px 9px 34px;
+    background: #fff5f5;
+    border: 1px solid #ffd5d5;
+    border-left: 3px solid #e74c3c;
+    border-radius: 0 6px 6px 0;
+    font-size: 9.5pt;
+    color: #3d2020;
+    position: relative;
+  }
+
+  .problem-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 11px;
+    color: #e74c3c;
+    font-weight: 700;
+  }
+
+  .action-list li {
+    padding: 9px 12px 9px 34px;
+    background: #f5f8ff;
+    border: 1px solid #d0ddf8;
+    border-left: 3px solid #0f3460;
+    border-radius: 0 6px 6px 0;
+    font-size: 9.5pt;
+    color: #1e2d50;
+    position: relative;
+  }
+
+  .action-list li::before {
+    content: '→';
+    position: absolute;
+    left: 11px;
+    color: #0f3460;
+    font-weight: 700;
+  }
+
+  /* ─── KEYWORDS TABLE ─── */
+  .kw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-bottom: 14px;
+  }
+
+  .kw-table th {
+    background: #0f3460;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 8.5pt;
+    font-weight: 600;
+  }
+
+  .kw-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eef;
+  }
+
+  .kw-table tr:nth-child(even) td { background: #f5f8ff; }
+
+  /* ─── SITEMAP ─── */
+  .sitemap {
+    background: #f4f6fa;
+    border: 1px solid #dde3f0;
+    border-radius: 8px;
+    padding: 18px 22px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    color: #2c3e50;
+    line-height: 2;
+  }
+
+  .sitemap .root { font-weight: 700; color: #0f3460; font-size: 10pt; }
+  .sitemap .new  { color: #c0392b; font-weight: 600; }
+  .sitemap .ok   { color: #27ae60; }
+
+  /* ─── BUDGET TABLE ─── */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+  }
+
+  .budget-table th {
+    background: #0f3460;
+    color: white;
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 9pt;
+  }
+
+  .budget-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .budget-table tr:nth-child(even) td { background: #f8f9ff; }
+  .budget-table td:last-child { text-align: right; font-weight: 600; color: #0f3460; }
+
+  .budget-table .total td {
+    background: #0f3460 !important;
+    color: white;
+    font-weight: 700;
+    font-size: 11pt;
+  }
+
+  .budget-table .total td:last-child { color: #ffa500; }
+
+  /* ─── PRIORITY SUMMARY ─── */
+  .priority-block {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+
+  .priority-block.red    { background: #fff5f5; border: 1.5px solid #f5c6c6; border-left: 5px solid #e74c3c; }
+  .priority-block.orange { background: #fffaf4; border: 1.5px solid #f5ddb0; border-left: 5px solid #e67e22; }
+  .priority-block.green  { background: #f4fff8; border: 1.5px solid #b8efd0; border-left: 5px solid #27ae60; }
+
+  .priority-block .pb-title {
+    font-size: 11pt;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .priority-block.red    .pb-title { color: #e74c3c; }
+  .priority-block.orange .pb-title { color: #e67e22; }
+  .priority-block.green  .pb-title { color: #27ae60; }
+
+  .priority-block ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .priority-block ul li {
+    font-size: 9.5pt;
+    color: #333;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .priority-block ul li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    font-weight: 700;
+  }
+
+  .priority-block.red    ul li::before { color: #e74c3c; }
+  .priority-block.orange ul li::before { color: #e67e22; }
+  .priority-block.green  ul li::before { color: #27ae60; }
+
+  /* ─── SECTION DIVIDER ─── */
+  .step-sep {
+    height: 32px;
+  }
+
+  /* ─── FOOTER ─── */
+  .doc-footer {
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: #bbb;
+  }
+
+  /* ─── INTRO NOTE ─── */
+  .intro-note {
+    background: #f0f4ff;
+    border-left: 4px solid #0f3460;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    font-size: 10pt;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  /* ─── CONTEXT TABLE ─── */
+  .ctx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin-bottom: 24px;
+  }
+
+  .ctx-table th {
+    background: #0f3460;
+    color: white;
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 9pt;
+  }
+
+  .ctx-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .ctx-table tr:nth-child(even) td { background: #f8f9ff; }
+  .ctx-table td:first-child { font-weight: 600; color: #0f3460; width: 35%; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COUVERTURE ══════════ -->
+<div class="cover">
+  <div class="cover-badge">Audit complet — 15 étapes</div>
+  <h1>Plan d'amélioration<br><span>franceconfortisolation.com</span></h1>
+  <p class="cover-sub">De la création à la conversion — toutes les étapes détaillées</p>
+  <div class="cover-line"></div>
+  <div class="cover-info">
+    <div class="ci-label">Établi pour</div>
+    <div class="ci-value">France Confort Isolation</div>
+    <div class="ci-url">franceconfortisolation.com</div>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Mai 2026</strong>Date de l'audit</div>
+    <div class="cover-meta-item"><strong>15 étapes</strong>Analysées en détail</div>
+    <div class="cover-meta-item"><strong>Bordeaux — Gironde</strong>Zone d'activité</div>
+  </div>
+</div>
+
+
+<!-- ══════════ CONTEXTE ══════════ -->
+<div class="intro-note">
+  Ce document présente les <strong>15 axes d'amélioration</strong> de votre site web, de la stratégie initiale jusqu'à la maintenance long terme. Pour chaque étape : ce qui pose problème aujourd'hui, et les actions concrètes à mettre en place. À la fin, un récapitulatif priorisé (urgent / important / développement) et une estimation budgétaire.
+</div>
+
+<table class="ctx-table">
+  <tr><th>Entreprise</th><th>Informations</th></tr>
+  <tr><td>Raison sociale</td><td>France Confort Isolation</td></tr>
+  <tr><td>Adresse</td><td>6 rue de l'Hermite, 33520 Bruges (Gironde)</td></tr>
+  <tr><td>Téléphone</td><td>06 17 82 22 18</td></tr>
+  <tr><td>Site web</td><td>franceconfortisolation.com</td></tr>
+  <tr><td>Créée en</td><td>2020</td></tr>
+  <tr><td>Certification</td><td>Qualibat RGE</td></tr>
+  <tr><td>Services</td><td>Isolation combles perdus &amp; rampants, nettoyage toiture/façade, traitement du bois, étanchéité</td></tr>
+  <tr><td>Zone d'intervention</td><td>Bordeaux et agglomération (Mérignac, Bruges, Eysines…)</td></tr>
+  <tr><td>Note Google actuelle</td><td>4,2 / 5 — seulement 3 avis (insuffisant)</td></tr>
+  <tr><td>Pages indexées sur Google</td><td>2 seulement (accueil + produits) — très insuffisant</td></tr>
+</table>
+
+
+<!-- ══════════ ÉTAPE 1 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">1</div>
+  <div class="step-titles">
+    <div class="step-title">Stratégie &amp; Positionnement</div>
+    <div class="step-subtitle">Définir clairement ce que vous faites, pour qui, et pourquoi vous plutôt qu'un concurrent</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés</div>
+  <ul class="problem-list">
+    <li>Aucun positionnement différenciant visible — le site ressemble à 100 autres sites d'isolation en France</li>
+    <li>Pas de proposition de valeur claire en haut de page ("Pourquoi nous plutôt qu'un concurrent ?")</li>
+    <li>La zone géographique desservie n'est pas mise en avant (Bordeaux métropole = fort potentiel local)</li>
+    <li>La certification RGE Qualibat est un avantage majeur insuffisamment exploité — elle donne accès aux aides MaPrimeRénov' pour vos clients</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Définir et afficher une proposition de valeur unique, ex. : "Certifiés RGE — Devis sous 24h — Financement à 0€ pour vos clients"</li>
+    <li>Créer des pages dédiées par ville (Bordeaux, Mérignac, Bruges, Eysines, Pessac…)</li>
+    <li>Se positionner sur le segment "aides de l'État" (MaPrimeRénov', CEE, éco-PTZ) — très recherché sur Google</li>
+    <li>Définir vos clients cibles : propriétaires, bailleurs, syndics de copropriété</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 2 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">2</div>
+  <div class="step-titles">
+    <div class="step-title">Identité Visuelle &amp; Marque</div>
+    <div class="step-subtitle">Logo, couleurs, typographie, cohérence visuelle sur tous les supports</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés</div>
+  <ul class="problem-list">
+    <li>Design générique, sans identité forte ni mémorisable</li>
+    <li>Palette de couleurs probablement non cohérente sur toutes les pages</li>
+    <li>Typographie non optimisée pour la lisibilité et le professionnalisme</li>
+    <li>Pas de charte graphique définie</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Créer ou refondre un logo professionnel (avec pictogramme lié à l'isolation / maison / énergie)</li>
+    <li>Définir une charte graphique complète : 2-3 couleurs, 2 polices maximum, espacements uniformes</li>
+    <li>Utiliser des visuels de haute qualité — vraies photos de chantiers, équipes, avant/après</li>
+    <li>Bannir les photos stock génériques : les clients veulent voir de vrais travaux</li>
+    <li>Appliquer cette cohérence sur TOUS les supports : site, réseaux, devis PDF, tenue de chantier</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 3 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">3</div>
+  <div class="step-titles">
+    <div class="step-title">Architecture &amp; Structure du Site</div>
+    <div class="step-subtitle">Navigation, nombre de pages, maillage interne — la colonne vertébrale du site</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés — CRITIQUE</div>
+  <ul class="problem-list">
+    <li>Seulement 2 pages indexées par Google — c'est catastrophique pour un site professionnel</li>
+    <li>Pas de pages dédiées par service (isolation combles perdus, rampants, murs, plancher…)</li>
+    <li>Pas de pages locales par ville (Bordeaux, Mérignac, Bruges…)</li>
+    <li>Pas de blog, pas de page "À propos", pas de page "Contact" dédiée, pas de page "Aides et financement"</li>
+    <li>Maillage interne inexistant (les pages ne se renvoient pas entre elles)</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Structure cible recommandée</div>
+  <div class="sitemap">
+<span class="root">/ Accueil</span>
+├── /services/
+│   ├── <span class="new">/isolation-combles-perdus/</span>
+│   ├── <span class="new">/isolation-combles-rampants/</span>
+│   ├── <span class="new">/isolation-murs-exterieurs/</span>
+│   ├── <span class="new">/isolation-plancher/</span>
+│   ├── <span class="new">/nettoyage-toiture-facade/</span>
+│   └── <span class="new">/traitement-bois/</span>
+├── <span class="ok">✓</span> /produits/ — à enrichir
+├── <span class="new">/aides-financement/</span>  ← MaPrimeRénov', CEE, éco-PTZ
+├── <span class="new">/realisations/</span>         ← Photos avant/après
+├── <span class="new">/zone-intervention/</span>
+│   ├── /isolation-bordeaux/
+│   ├── /isolation-merignac/
+│   ├── /isolation-bruges/
+│   └── /isolation-eysines/
+├── <span class="new">/blog/</span>
+├── <span class="new">/a-propos/</span>
+├── <span class="new">/avis-clients/</span>
+├── <span class="new">/contact/</span>
+└── /mentions-legales/
+  </div>
+</div>
+
+
+<!-- ══════════ ÉTAPE 4 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">4</div>
+  <div class="step-titles">
+    <div class="step-title">Contenu Éditorial</div>
+    <div class="step-subtitle">Qualité des textes, valeur ajoutée pour le visiteur, clarté des offres</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés</div>
+  <ul class="problem-list">
+    <li>Contenu très mince : 2 pages = volume insuffisant pour le SEO et pour inspirer confiance</li>
+    <li>Descriptions de services manquant de détail technique et de bénéfices pour le client</li>
+    <li>Aucun guide pratique, aucun conseil — zéro valeur ajoutée pour le visiteur</li>
+    <li>Les aides financières ne sont pas présentées clairement</li>
+    <li>Pas de section FAQ, pas de certifications bien mises en valeur</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Rédiger des pages service détaillées (600 à 1 200 mots chacune) : bénéfices + processus + matériaux utilisés</li>
+    <li>Créer une page "Aides &amp; Financement" complète (MaPrimeRénov' 2026, CEE, TVA 5,5%, éco-PTZ)</li>
+    <li>Publier un minimum d'un article de blog par mois sur des requêtes locales recherchées</li>
+    <li>Ajouter une FAQ sur chaque page service (questions fréquentes des clients)</li>
+    <li>Mettre en avant la certification RGE avec son logo officiel et l'explication des bénéfices pour le client</li>
+    <li>Créer une page "Réalisations" avec photos avant/après de vrais chantiers</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 5 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">5</div>
+  <div class="step-titles">
+    <div class="step-title">SEO — Référencement Naturel</div>
+    <div class="step-subtitle">Être trouvé sur Google sans payer de publicité</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés — CRITIQUE</div>
+  <ul class="problem-list">
+    <li>2 pages seulement = quasi-invisible sur Google</li>
+    <li>Le site bloque actuellement les robots de Google (erreur 403) — Google ne peut pas lire vos pages</li>
+    <li>Balises titre et descriptions probablement non optimisées</li>
+    <li>Pas de données structurées (informations lisibles par Google sur vos services, avis, localisation)</li>
+    <li>Aucune stratégie de mots-clés visible</li>
+    <li>Backlinks (liens provenant d'autres sites) quasi-nuls</li>
+    <li>Fiche Google Business Profile probablement non optimisée</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Mots-clés cibles prioritaires</div>
+  <table class="kw-table">
+    <tr><th>Type</th><th>Mot-clé</th><th>Potentiel</th></tr>
+    <tr><td>Transaction</td><td>isolation combles Bordeaux</td><td>Fort</td></tr>
+    <tr><td>Transaction</td><td>isolation RGE Bordeaux</td><td>Moyen</td></tr>
+    <tr><td>Transaction</td><td>MaPrimeRénov isolation Gironde</td><td>Moyen</td></tr>
+    <tr><td>Local</td><td>isolation combles Mérignac</td><td>Moyen</td></tr>
+    <tr><td>Local</td><td>isolation combles Bruges</td><td>Faible mais peu concurrentiel</td></tr>
+    <tr><td>Information</td><td>aide isolation 2026</td><td>Fort</td></tr>
+    <tr><td>Information</td><td>coût isolation combles perdus</td><td>Fort</td></tr>
+  </table>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Corriger l'erreur 403 — priorité absolue, sans cela Google ne peut pas vous indexer</li>
+    <li>Optimiser les balises titre et meta description de chaque page (uniques, avec mot-clé + ville)</li>
+    <li>Implémenter les données structurées : entreprise locale, services, avis, FAQ</li>
+    <li>Créer et optimiser une fiche Google Business Profile complète (photos, horaires, description, posts réguliers)</li>
+    <li>Obtenir des liens depuis des annuaires BTP, Qualibat, Pages Jaunes, presse locale</li>
+    <li>S'inscrire sur les annuaires sectoriels : Qualibat.com, RGE.gouv.fr, MaPrimeRénov</li>
+    <li>Générer des avis Google — objectif minimum 20 avis à 4,5 étoiles</li>
+    <li>Créer un plan du site XML et le soumettre à Google Search Console</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 6 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">6</div>
+  <div class="step-titles">
+    <div class="step-title">Performance Technique</div>
+    <div class="step-subtitle">Vitesse de chargement, hébergement, qualité du code</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés</div>
+  <ul class="problem-list">
+    <li>Le site retourne une erreur 403 aux robots d'exploration — mauvaise configuration serveur</li>
+    <li>Vitesse de chargement non mesurable depuis l'extérieur — probablement non optimisée</li>
+    <li>Hébergement probablement mutualisé bas de gamme (lent, instable)</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Mesurer la vitesse via PageSpeed Insights de Google — objectifs : chargement &lt; 2,5 secondes</li>
+    <li>Optimiser toutes les images : format moderne (WebP), compression, chargement différé</li>
+    <li>Activer la mise en cache navigateur et serveur</li>
+    <li>Minifier les fichiers CSS, JavaScript et HTML (réduction du poids des pages)</li>
+    <li>Corriger la configuration serveur qui bloque Google et les outils de monitoring</li>
+    <li>Envisager un hébergement dédié ou VPS plutôt que mutualisé</li>
+    <li>Vérifier et corriger les erreurs 404 (pages introuvables) et redirections cassées</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 7 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">7</div>
+  <div class="step-titles">
+    <div class="step-title">Sécurité</div>
+    <div class="step-subtitle">Protéger le site, les données clients et la réputation</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ État actuel</div>
+  <ul class="problem-list">
+    <li>HTTPS actif — c'est le seul point positif identifié sur la sécurité</li>
+    <li>Configuration des en-têtes de sécurité inconnue (probablement absents)</li>
+    <li>Back-office CMS potentiellement non protégé</li>
+    <li>Politique de sauvegardes inconnue</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Vérifier que le certificat SSL est valide et se renouvelle automatiquement</li>
+    <li>Forcer la redirection de toutes les pages HTTP vers HTTPS</li>
+    <li>Implémenter les en-têtes de sécurité HTTP (HSTS, X-Frame-Options, X-Content-Type-Options)</li>
+    <li>Protéger le back-office : changer l'URL d'administration, activer la double authentification</li>
+    <li>Mettre en place des sauvegardes automatiques quotidiennes du site</li>
+    <li>Maintenir le CMS et tous les plugins à jour (source de faille n°1 pour les PME)</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 8 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">8</div>
+  <div class="step-titles">
+    <div class="step-title">RGPD &amp; Conformité Légale</div>
+    <div class="step-subtitle">Obligations légales françaises — risque d'amende en cas de non-conformité</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés — CRITIQUE LÉGAL</div>
+  <ul class="problem-list">
+    <li>Bandeau de consentement cookies probablement absent ou non conforme aux exigences de la CNIL</li>
+    <li>Politique de confidentialité probablement inexistante ou incomplète</li>
+    <li>Mentions légales probablement insuffisantes (SIRET, hébergeur, responsable de publication)</li>
+    <li>Formulaire de contact sans case de consentement RGPD explicite</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Installer un gestionnaire de consentement cookies conforme CNIL — outil gratuit disponible : Tarteaucitron</li>
+    <li>Rédiger une politique de confidentialité complète : données collectées, durée de conservation, droits des utilisateurs</li>
+    <li>Compléter les mentions légales : SIRET, RCS, responsable de publication, hébergeur</li>
+    <li>Ajouter une case à cocher de consentement sur tous les formulaires du site</li>
+    <li>Ne jamais stocker de données personnelles sans consentement explicite préalable</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 9 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">9</div>
+  <div class="step-titles">
+    <div class="step-title">Responsive Design &amp; Mobile</div>
+    <div class="step-subtitle">Plus de 65% de vos visiteurs arrivent depuis un téléphone</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Contexte</div>
+  <ul class="problem-list">
+    <li>En France, plus de 60% du trafic web vient du mobile — pour les artisans locaux, cela monte souvent à 70-80%</li>
+    <li>Un site mal adapté au mobile perd la majorité de ses visiteurs en moins de 3 secondes</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Réaliser un audit complet sur mobile via l'outil Google Mobile-Friendly Test</li>
+    <li>S'assurer que tous les boutons sont facilement cliquables au doigt (taille minimale recommandée : 44x44 pixels)</li>
+    <li>Rendre le numéro de téléphone cliquable sur mobile pour appeler directement — priorité absolue</li>
+    <li>Vérifier que le menu est fonctionnel et accessible sur petit écran</li>
+    <li>Vérifier que les formulaires sont utilisables sur mobile (champs suffisamment grands)</li>
+    <li>S'assurer qu'il n'y a pas de défilement horizontal sur mobile (signe d'un site mal adapté)</li>
+    <li>Taille de police minimum 16px sur mobile pour une lecture confortable</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 10 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">10</div>
+  <div class="step-titles">
+    <div class="step-title">Conversion &amp; Tunnel de Vente</div>
+    <div class="step-subtitle">Transformer un visiteur en prospect — le cœur du site</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés — CRITIQUE BUSINESS</div>
+  <ul class="problem-list">
+    <li>Pas de bouton "Appel à l'action" (devis, appel) visible et répété sur chaque page</li>
+    <li>Pas de formulaire de demande de devis en ligne</li>
+    <li>Pas de bouton "Appeler maintenant" fixe sur mobile</li>
+    <li>Pas de réassurance visible : labels, certifications, nombre de chantiers, années d'expérience</li>
+    <li>Aucune preuve sociale : avis, témoignages, photos avant/après</li>
+    <li>Pas de chat ou de bouton WhatsApp pour capter les visiteurs hésitants</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Ajouter un menu fixe en haut de page avec numéro de téléphone cliquable + bouton "Devis gratuit"</li>
+    <li>Bouton flottant "Appeler" en bas d'écran sur mobile — visible en permanence</li>
+    <li>Formulaire de devis simplifié : nom, téléphone, type de travaux, code postal (4 champs max)</li>
+    <li>Section "réassurance" sur l'accueil : nombre de chantiers réalisés, années d'expérience, certification RGE</li>
+    <li>Intégrer les avis Google directement sur le site (widget ou copie des meilleurs avis)</li>
+    <li>Ajouter des photos avant/après avec description du chantier</li>
+    <li>Bouton WhatsApp Business sur le site — canal de contact très utilisé</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 11 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">11</div>
+  <div class="step-titles">
+    <div class="step-title">Réseaux Sociaux &amp; E-réputation</div>
+    <div class="step-subtitle">Votre image en ligne au-delà du site web</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ État actuel</div>
+  <ul class="problem-list">
+    <li>4,2/5 sur Mappy avec seulement 3 avis — base trop faible pour rassurer un prospect</li>
+    <li>Présence sur les réseaux sociaux inconnue ou inexistante</li>
+    <li>Pas de stratégie de collecte d'avis en place</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Compléter et optimiser la fiche Google Business Profile : photos de chantiers, horaires, services, posts réguliers</li>
+    <li>Lancer une campagne d'acquisition d'avis : envoyer un SMS ou email à chaque client après chantier avec lien direct</li>
+    <li>Objectif : 30 avis Google minimum à 4,5 étoiles dans les 6 mois</li>
+    <li>Créer une page Facebook professionnelle avec publications régulières (avant/après, conseils, offres)</li>
+    <li>Instagram : photos de chantiers = contenu visuellement très impactant pour ce secteur</li>
+    <li>Répondre à TOUS les avis (positifs et négatifs) pour montrer votre sérieux et réactivité</li>
+    <li>LinkedIn pour la crédibilité professionnelle (syndics, agences immobilières, promoteurs)</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 12 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">12</div>
+  <div class="step-titles">
+    <div class="step-title">Accessibilité</div>
+    <div class="step-subtitle">Un site utilisable par tous — bonne pratique et obligation progressive</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Vérifier que le contraste texte/fond est suffisant (ratio minimum 4,5:1 pour la lisibilité)</li>
+    <li>Ajouter une description textuelle sur toutes les images (attribut "alt") — requis pour Google et les non-voyants</li>
+    <li>S'assurer que le site est navigable au clavier (sans souris)</li>
+    <li>Respecter une hiérarchie des titres cohérente : Titre principal → Titre secondaire → Titre de section</li>
+    <li>Remplacer les liens "cliquez ici" par des textes descriptifs ("Demander un devis gratuit")</li>
+    <li>Taille de police minimum 16px sur mobile pour un confort de lecture optimal</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 13 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">13</div>
+  <div class="step-titles">
+    <div class="step-title">Tracking &amp; Analytics</div>
+    <div class="step-subtitle">Mesurer pour progresser — savoir ce qui fonctionne</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Problèmes identifiés</div>
+  <ul class="problem-list">
+    <li>Aucun outil de mesure visible ou insuffisant — impossible de savoir combien de visiteurs arrivent sur le site</li>
+    <li>Sans données, impossible de prendre de bonnes décisions pour améliorer le site</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Installer Google Analytics 4 (GA4) — gratuit, mesure tout le trafic du site</li>
+    <li>Configurer Google Search Console — gratuit, donne les performances SEO et erreurs d'indexation</li>
+    <li>Suivre les conversions importantes : appels téléphoniques, soumissions de formulaire, clics sur email</li>
+    <li>Installer Microsoft Clarity (gratuit) — enregistre les sessions visiteurs et produit des cartes de chaleur</li>
+    <li>Connecter Google Analytics avec la fiche Google Business Profile pour une vue complète</li>
+    <li>Mettre en place des rapports mensuels simples pour suivre l'évolution du trafic et des contacts</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 14 ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num">14</div>
+  <div class="step-titles">
+    <div class="step-title">Publicité Payante</div>
+    <div class="step-subtitle">Accélérer la visibilité en attendant les résultats SEO (optionnel)</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title">⚠ Contexte</div>
+  <ul class="problem-list">
+    <li>Le référencement naturel (SEO) prend 3 à 6 mois pour produire des résultats significatifs</li>
+    <li>La publicité Google permet d'apparaître immédiatement en tête des résultats, mais nécessite un budget mensuel</li>
+    <li>Le secteur isolation/rénovation énergétique est très demandé — les leads valent cher mais se convertissent bien</li>
+  </ul>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Google Ads Local : campagnes sur les mots-clés transactionnels ("isolation combles Bordeaux", "devis isolation Mérignac")</li>
+    <li>Google Local Services Ads : badge "Vérifié par Google" — taux de conversion élevé pour les artisans</li>
+    <li>Remarketing : recibler les visiteurs qui ont quitté le site sans prendre contact</li>
+    <li>Budget recommandé pour démarrer : 300 à 500 €/mois avec suivi et ajustements mensuels</li>
+    <li>Mesurer le coût par lead obtenu et ajuster les campagnes en conséquence</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ ÉTAPE 15 ══════════ -->
+<div class="step-sep page-break"></div>
+<div class="step-header">
+  <div class="step-num">15</div>
+  <div class="step-titles">
+    <div class="step-title">Maintenance &amp; Évolution Long Terme</div>
+    <div class="step-subtitle">Un site non entretenu perd du terrain — la maintenance est un investissement continu</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-title blue">→ Actions à mener</div>
+  <ul class="action-list">
+    <li>Mettre en place un plan de maintenance mensuel : mises à jour du CMS et des plugins, vérification des sauvegardes</li>
+    <li>Surveiller la disponibilité du site 24h/24 (outil gratuit : UptimeRobot — alerte si le site tombe)</li>
+    <li>Audit SEO tous les 3 mois : vérifier les positions sur Google, les pages en baisse, les nouvelles opportunités</li>
+    <li>Publier de nouvelles réalisations (photos avant/après) après chaque chantier significatif</li>
+    <li>Publier un article de blog minimum par mois sur des sujets recherchés par vos clients</li>
+    <li>Revue annuelle complète du site : design, contenu, performances, concurrence</li>
+    <li>Mettre à jour les informations sur les aides de l'État chaque année (MaPrimeRénov' évolue régulièrement)</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ SYNTHÈSE PRIORITÉS ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num" style="background:#555;">✓</div>
+  <div class="step-titles">
+    <div class="step-title" style="color:#333;">Synthèse — Priorités &amp; Planning</div>
+    <div class="step-subtitle">Ce qui doit être fait en premier, ce qui peut attendre</div>
+  </div>
+</div>
+
+<div class="priority-block red">
+  <div class="pb-title">PRIORITÉ 1 — URGENT (dans les 30 premiers jours)</div>
+  <ul>
+    <li>Corriger l'erreur 403 — rendre le site visible par Google (étape 5 &amp; 6)</li>
+    <li>Installer le bandeau cookies RGPD conforme CNIL — obligation légale (étape 8)</li>
+    <li>Numéro de téléphone cliquable + bouton "Devis gratuit" visible sur mobile (étape 10)</li>
+    <li>Compléter la fiche Google Business Profile avec photos et informations complètes (étape 5 &amp; 11)</li>
+    <li>Lancer la campagne d'avis Google auprès de vos clients existants (étape 11)</li>
+    <li>Vérifier et compléter les mentions légales et la politique de confidentialité (étape 8)</li>
+    <li>Vérifier le certificat SSL (étape 7)</li>
+  </ul>
+</div>
+
+<div class="priority-block orange">
+  <div class="pb-title">PRIORITÉ 2 — IMPORTANT (1 à 3 mois)</div>
+  <ul>
+    <li>Créer une page dédiée par service (étape 3 &amp; 4)</li>
+    <li>Créer la page "Aides &amp; Financement" (MaPrimeRénov', CEE…) (étape 4)</li>
+    <li>Formulaire de demande de devis en ligne (étape 10)</li>
+    <li>Prendre des photos professionnelles de chantiers (étape 2 &amp; 10)</li>
+    <li>Installer Google Analytics et Google Search Console (étape 13)</li>
+    <li>Refonte visuelle : logo, charte graphique, design général (étape 2)</li>
+    <li>Afficher la certification RGE et les preuves de confiance sur l'accueil (étape 10)</li>
+    <li>Créer des pages locales par ville (étape 3 &amp; 5)</li>
+    <li>Intégrer les avis Google sur le site (étape 10 &amp; 11)</li>
+  </ul>
+</div>
+
+<div class="priority-block green">
+  <div class="pb-title">PRIORITÉ 3 — DÉVELOPPEMENT (3 à 6 mois)</div>
+  <ul>
+    <li>Lancer le blog avec des articles pratiques — 1 article par mois (étape 4 &amp; 5)</li>
+    <li>Campagne Google Ads locale (optionnel selon budget) (étape 14)</li>
+    <li>Activer Facebook et Instagram professionnels (étape 11)</li>
+    <li>Inscription sur les annuaires professionnels (Qualibat, Pages Jaunes, Houzz…) (étape 5)</li>
+    <li>Optimisation de la vitesse du site (étape 6)</li>
+    <li>Bouton WhatsApp Business sur le site (étape 10)</li>
+    <li>Mise en place de la maintenance régulière mensuelle (étape 15)</li>
+    <li>Accessibilité et vérification mobile complète (étape 9 &amp; 12)</li>
+  </ul>
+</div>
+
+
+<!-- ══════════ BUDGET ══════════ -->
+<div class="step-sep"></div>
+<div class="step-header">
+  <div class="step-num" style="background:#555;">€</div>
+  <div class="step-titles">
+    <div class="step-title" style="color:#333;">Estimation Budgétaire</div>
+    <div class="step-subtitle">Fourchettes indicatives — à affiner selon vos prestataires</div>
+  </div>
+</div>
+
+<table class="budget-table">
+  <tr>
+    <th>Poste</th>
+    <th>Priorité</th>
+    <th>Estimation</th>
+  </tr>
+  <tr>
+    <td>Correction technique + conformité RGPD (développeur)</td>
+    <td>🔴 Urgent</td>
+    <td>200 – 500 €</td>
+  </tr>
+  <tr>
+    <td>Photos professionnelles de vrais chantiers</td>
+    <td>🟠 Important</td>
+    <td>300 – 600 €</td>
+  </tr>
+  <tr>
+    <td>Refonte complète du site (design + pages + contenu)</td>
+    <td>🟠 Important</td>
+    <td>2 000 – 4 000 €</td>
+  </tr>
+  <tr>
+    <td>Rédaction du contenu (pages services + blog 6 mois)</td>
+    <td>🟠 Important</td>
+    <td>800 – 1 500 €</td>
+  </tr>
+  <tr>
+    <td>Campagne Google Ads locale — 6 mois (optionnel)</td>
+    <td>🟢 Croissance</td>
+    <td>1 800 – 3 000 €</td>
+  </tr>
+  <tr>
+    <td>Maintenance annuelle du site</td>
+    <td>🟢 Récurrent</td>
+    <td>500 – 1 200 €/an</td>
+  </tr>
+  <tr class="total">
+    <td colspan="2">Total estimé (lancement complet)</td>
+    <td>5 000 – 10 000 €</td>
+  </tr>
+</table>
+
+<div style="background:#f0f4ff; border-left:4px solid #0f3460; border-radius:0 8px 8px 0; padding:14px 18px; font-size:9pt; color:#444; line-height:1.7; margin-top:16px;">
+  <strong style="color:#0f3460;">Bon à savoir :</strong> Plusieurs actions sont totalement gratuites — Google Business Profile, Google Analytics, Google Search Console, collecte d'avis clients, réseaux sociaux. Le budget ci-dessus concerne uniquement les prestations nécessitant un prestataire extérieur. Les actions de priorité 1 peuvent être réalisées pour moins de 500 €, avec un impact immédiat et mesurable.
+</div>
+
+<div class="doc-footer">
+  <span>Audit réalisé en mai 2026 — franceconfortisolation.com</span>
+  <span>Document confidentiel — Usage interne</span>
+</div>
+
+</body>
+</html>
