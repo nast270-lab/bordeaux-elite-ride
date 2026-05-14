@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Site Web — France Confort Isolation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  /* ─── COVER PAGE ─── */
+  .cover {
+    width: 100%;
+    min-height: 297mm;
+    background: linear-gradient(145deg, #0f3460 0%, #16213e 60%, #0d1b2a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 70px;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 380px;
+    height: 380px;
+    background: rgba(255,165,0,0.08);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    background: rgba(255,165,0,0.05);
+    border-radius: 50%;
+  }
+
+  .cover-top { color: white; }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,165,0,0.2);
+    border: 1px solid rgba(255,165,0,0.4);
+    color: #ffa500;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-size: 34pt;
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .cover h1 span { color: #ffa500; }
+
+  .cover-subtitle {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 50px;
+    max-width: 480px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: #ffa500;
+    margin-bottom: 50px;
+  }
+
+  .cover-company {
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid #ffa500;
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+
+  .cover-company .label {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .cover-company .name {
+    font-size: 15pt;
+    font-weight: 700;
+    color: white;
+  }
+
+  .cover-company .url {
+    font-size: 9pt;
+    color: #ffa500;
+    margin-top: 2px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    color: rgba(255,255,255,0.5);
+    font-size: 9pt;
+  }
+
+  .cover-meta-item strong {
+    display: block;
+    color: white;
+    font-size: 10pt;
+    font-weight: 600;
+  }
+
+  /* ─── PAGE LAYOUT ─── */
+  .page {
+    padding: 50px 60px;
+    page-break-after: always;
+  }
+
+  .page:last-child { page-break-after: avoid; }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .section-number {
+    width: 36px;
+    height: 36px;
+    background: #0f3460;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 11pt;
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 16pt;
+    font-weight: 700;
+    color: #0f3460;
+  }
+
+  .section-subtitle {
+    font-size: 9pt;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* ─── INTRO BOXES ─── */
+  .intro-box {
+    background: #f8f9ff;
+    border-left: 4px solid #0f3460;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    font-size: 10pt;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  /* ─── PRIORITY CARDS ─── */
+  .priority-section {
+    margin-bottom: 30px;
+  }
+
+  .priority-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .priority-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .priority-dot.red    { background: #e74c3c; }
+  .priority-dot.orange { background: #e67e22; }
+  .priority-dot.green  { background: #27ae60; }
+
+  .priority-title {
+    font-size: 12pt;
+    font-weight: 700;
+  }
+
+  .priority-title.red    { color: #e74c3c; }
+  .priority-title.orange { color: #e67e22; }
+  .priority-title.green  { color: #27ae60; }
+
+  .priority-desc {
+    font-size: 8.5pt;
+    color: #999;
+    margin-left: 22px;
+    margin-top: -10px;
+    margin-bottom: 12px;
+  }
+
+  /* ─── TASK ITEMS ─── */
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 22px;
+  }
+
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+  }
+
+  .task-item.red    { border-left: 3px solid #e74c3c; }
+  .task-item.orange { border-left: 3px solid #e67e22; }
+  .task-item.green  { border-left: 3px solid #27ae60; }
+
+  .task-check {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid #ddd;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .task-check.red    { border-color: #e74c3c; }
+  .task-check.orange { border-color: #e67e22; }
+  .task-check.green  { border-color: #27ae60; }
+
+  .task-content { flex: 1; }
+
+  .task-title {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 2px;
+  }
+
+  .task-desc {
+    font-size: 8.5pt;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  /* ─── INFO TABLE ─── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 9.5pt;
+  }
+
+  .info-table th {
+    background: #0f3460;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+
+  .info-table th:first-child { border-radius: 6px 0 0 0; }
+  .info-table th:last-child  { border-radius: 0 6px 0 0; }
+
+  .info-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+
+  .info-table tr:nth-child(even) td { background: #f8f9ff; }
+
+  .info-table td:first-child {
+    font-weight: 600;
+    color: #0f3460;
+    width: 35%;
+  }
+
+  /* ─── STAT BOXES ─── */
+  .stat-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .stat-box {
+    flex: 1;
+    padding: 18px 16px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .stat-box.danger  { background: #fff0ef; border: 1px solid #ffcbc8; }
+  .stat-box.warning { background: #fff8ef; border: 1px solid #ffdda8; }
+  .stat-box.info    { background: #eff6ff; border: 1px solid #c0d9ff; }
+  .stat-box.ok      { background: #f0fff6; border: 1px solid #b8f0d0; }
+
+  .stat-value {
+    font-size: 22pt;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-box.danger  .stat-value { color: #e74c3c; }
+  .stat-box.warning .stat-value { color: #e67e22; }
+  .stat-box.info    .stat-value { color: #2980b9; }
+  .stat-box.ok      .stat-value { color: #27ae60; }
+
+  .stat-label {
+    font-size: 8pt;
+    color: #888;
+    font-weight: 500;
+  }
+
+  /* ─── SITE MAP ─── */
+  .sitemap-box {
+    background: #f5f7ff;
+    border: 1px solid #dde3f8;
+    border-radius: 10px;
+    padding: 22px 26px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    color: #2c3e50;
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+
+  .sitemap-box .sm-root  { color: #0f3460; font-weight: 700; font-size: 10pt; }
+  .sitemap-box .sm-new   { color: #e74c3c; font-weight: 600; }
+  .sitemap-box .sm-ok    { color: #27ae60; }
+  .sitemap-box .sm-badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    font-size: 7pt;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: sans-serif;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  /* ─── BUDGET TABLE ─── */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin-bottom: 24px;
+  }
+
+  .budget-table th {
+    background: #0f3460;
+    color: white;
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 9pt;
+  }
+
+  .budget-table th:first-child { border-radius: 6px 0 0 0; }
+  .budget-table th:last-child  { border-radius: 0 6px 0 0; text-align: right; }
+
+  .budget-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .budget-table tr:nth-child(even) td { background: #f8f9ff; }
+
+  .budget-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: #0f3460;
+  }
+
+  .budget-table .total-row td {
+    background: #0f3460 !important;
+    color: white;
+    font-weight: 700;
+    font-size: 10.5pt;
+  }
+
+  .budget-table .total-row td:last-child { color: #ffa500; }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: #e8e8e8;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 22px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  .timeline-item.red::before    { background: #e74c3c; }
+  .timeline-item.orange::before { background: #e67e22; }
+  .timeline-item.green::before  { background: #27ae60; }
+
+  .timeline-period {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .timeline-item.red    .timeline-period { color: #e74c3c; }
+  .timeline-item.orange .timeline-period { color: #e67e22; }
+  .timeline-item.green  .timeline-period { color: #27ae60; }
+
+  .timeline-content {
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .timeline-item.red    .timeline-content { border-left: 3px solid #e74c3c; }
+  .timeline-item.orange .timeline-content { border-left: 3px solid #e67e22; }
+  .timeline-item.green  .timeline-content { border-left: 3px solid #27ae60; }
+
+  .timeline-title {
+    font-weight: 700;
+    font-size: 10.5pt;
+    margin-bottom: 6px;
+    color: #1a1a2e;
+  }
+
+  .timeline-tasks {
+    font-size: 9pt;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .timeline-tasks li {
+    list-style: none;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .timeline-tasks li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #bbb;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: #bbb;
+  }
+
+  .footer strong { color: #888; }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    color: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+
+  .highlight-box h3 {
+    font-size: 13pt;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffa500;
+  }
+
+  .highlight-box p {
+    font-size: 10pt;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .highlight-box .highlight-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .highlight-box .hs-item {
+    text-align: center;
+  }
+
+  .highlight-box .hs-value {
+    font-size: 18pt;
+    font-weight: 800;
+    color: #ffa500;
+  }
+
+  .highlight-box .hs-label {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2px;
+  }
+
+  /* ─── PRINT ─── */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE DE COUVERTURE
+════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-badge">Audit &amp; Plan d'action</div>
+    <h1>Votre site web :<br>ce qu'il faut<br><span>améliorer</span></h1>
+    <p class="cover-subtitle">Un plan clair, priorisé et compréhensible pour renforcer votre présence en ligne et générer plus de clients.</p>
+    <div class="cover-divider"></div>
+    <div class="cover-company">
+      <div class="label">Établi pour</div>
+      <div class="name">France Confort Isolation</div>
+      <div class="url">franceconfortisolation.com</div>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <strong>Mai 2026</strong>
+      Date de l'audit
+    </div>
+    <div class="cover-meta-item">
+      <strong>Bordeaux – Gironde</strong>
+      Zone d'activité
+    </div>
+    <div class="cover-meta-item">
+      <strong>15 points</strong>
+      Axes analysés
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 — RÉSUMÉ EXÉCUTIF
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">↗</div>
+    <div>
+      <div class="section-title">Résumé de l'audit</div>
+      <div class="section-subtitle">Ce que nous avons analysé et ce qui ressort</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    Votre entreprise est certifiée RGE Qualibat, active depuis 2020, et opère dans un secteur en forte demande grâce aux aides de l'État (MaPrimeRénov'). Pourtant, votre site web ne reflète pas encore ce potentiel. Ce document vous présente, de manière simple et concrète, ce qui doit être fait — par ordre de priorité — pour que votre site devienne un vrai outil de développement commercial.
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-box danger">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Pages actuellement<br>visibles sur Google</div>
+    </div>
+    <div class="stat-box warning">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Avis clients en ligne<br>(objectif : 30+)</div>
+    </div>
+    <div class="stat-box info">
+      <div class="stat-value">0</div>
+      <div class="stat-label">Page service<br>dédiée créée</div>
+    </div>
+    <div class="stat-box ok">
+      <div class="stat-value">RGE</div>
+      <div class="stat-label">Certification Qualibat<br>✓ Atout majeur à exploiter</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h3>Le constat en une phrase</h3>
+    <p>Votre site existe, mais il est quasiment invisible : Google ne peut pas l'afficher correctement pour les personnes qui cherchent un artisan d'isolation dans votre secteur. Les actions listées dans ce document vont changer ça, étape par étape.</p>
+    <div class="highlight-stats">
+      <div class="hs-item">
+        <div class="hs-value">10–20</div>
+        <div class="hs-label">Leads/mois estimés<br>après actions</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-value">6 mois</div>
+        <div class="hs-label">Pour des résultats<br>SEO significatifs</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-value">J+30</div>
+        <div class="hs-label">Délai pour les<br>actions urgentes</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="info-table">
+    <tr>
+      <th>Entreprise</th>
+      <th>Détail</th>
+    </tr>
+    <tr><td>Raison sociale</td><td>France Confort Isolation</td></tr>
+    <tr><td>Adresse</td><td>6 rue de l'Hermite, 33520 Bruges (Gironde)</td></tr>
+    <tr><td>Téléphone</td><td>06 17 82 22 18</td></tr>
+    <tr><td>Création</td><td>2020</td></tr>
+    <tr><td>Certification</td><td>Qualibat RGE — accès aux aides de l'État pour vos clients</td></tr>
+    <tr><td>Services</td><td>Isolation combles, nettoyage toiture/façade, traitement du bois, produits d'étanchéité</td></tr>
+    <tr><td>Zone d'intervention</td><td>Bordeaux et agglomération (Mérignac, Bruges, Eysines…)</td></tr>
+  </table>
+
+  <div class="footer">
+    <span>Audit site web — France Confort Isolation</span>
+    <strong>Mai 2026</strong>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 3 — PRIORITÉ 1 : URGENT (0-30 JOURS)
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number" style="background:#e74c3c;">1</div>
+    <div>
+      <div class="section-title" style="color:#e74c3c;">Priorité 1 — À faire en premier</div>
+      <div class="section-subtitle">Actions urgentes — À réaliser dans les 30 premiers jours</div>
+    </div>
+  </div>
+
+  <div class="intro-box" style="border-left-color:#e74c3c; background:#fff8f8;">
+    Ces actions sont les plus importantes. Certaines concernent la loi (RGPD), d'autres votre visibilité immédiate sur Google. Elles ne coûtent pas cher et ont un impact rapide. C'est le point de départ obligatoire.
+  </div>
+
+  <div class="task-list">
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Rendre le site visible par Google</div>
+        <div class="task-desc">Actuellement, votre site bloque les robots d'indexation (erreur 403). Cela signifie que Google ne peut pas lire vos pages et ne vous affiche pas dans les résultats de recherche. À corriger en priorité avec votre hébergeur ou développeur.</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Conformité RGPD — Bandeau de cookies</div>
+        <div class="task-desc">Obligation légale en France depuis 2022. Sans bandeau de consentement cookies conforme CNIL, vous risquez une amende. À installer immédiatement sur le site (outil gratuit disponible : Tarteaucitron).</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Numéro de téléphone cliquable sur mobile</div>
+        <div class="task-desc">La plupart de vos visiteurs arrivent depuis un téléphone. Le numéro doit être cliquable pour appeler directement, et visible en haut de chaque page. Action simple, résultat immédiat sur les appels entrants.</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Bouton "Devis gratuit" visible en permanence</div>
+        <div class="task-desc">Chaque visiteur doit pouvoir demander un devis en 1 clic, depuis n'importe quelle page du site. Ce bouton doit être présent en haut de page (menu) et répété plusieurs fois dans le contenu.</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Compléter la fiche Google Business Profile (anciennement Google My Business)</div>
+        <div class="task-desc">C'est votre vitrine gratuite sur Google Maps et les résultats locaux. Ajoutez : photos de chantiers réels, horaires d'ouverture, description complète de vos services, lien vers le site. Si la fiche n'existe pas, la créer en priorité absolue.</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Lancer une campagne d'avis Google</div>
+        <div class="task-desc">Vous avez 3 avis. C'est insuffisant pour rassurer un prospect. Envoyez un SMS ou email à vos 20 derniers clients avec un lien direct pour laisser un avis. Objectif : atteindre 20 avis à 4.5 étoiles minimum en 2 mois.</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Vérifier le certificat SSL (cadenas sécurisé)</div>
+        <div class="task-desc">Votre site est bien en HTTPS, mais il faut s'assurer que le certificat est valide et se renouvelle automatiquement. Un site non sécurisé fait fuir les visiteurs et pénalise le référencement Google.</div>
+      </div>
+    </div>
+
+    <div class="task-item red">
+      <div class="task-check red"></div>
+      <div class="task-content">
+        <div class="task-title">Mentions légales complètes</div>
+        <div class="task-desc">Obligation légale. Vérifiez que les mentions légales indiquent bien : SIRET, RCS, responsable de publication, nom et adresse de l'hébergeur. Une page de politique de confidentialité doit également exister.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Audit site web — France Confort Isolation</span>
+    <strong>Priorité 1 — Urgent (J+30)</strong>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 4 — PRIORITÉ 2 : IMPORTANT (1-3 MOIS)
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number" style="background:#e67e22;">2</div>
+    <div>
+      <div class="section-title" style="color:#e67e22;">Priorité 2 — Important</div>
+      <div class="section-subtitle">Actions structurantes — À réaliser dans les 1 à 3 mois</div>
+    </div>
+  </div>
+
+  <div class="intro-box" style="border-left-color:#e67e22; background:#fffaf5;">
+    Ces actions demandent un peu plus de temps ou d'investissement, mais elles sont essentielles pour que votre site génère de vrais prospects. C'est ici que votre site passe d'une simple carte de visite à un vrai outil commercial.
+  </div>
+
+  <div class="task-list">
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Créer une page par service</div>
+        <div class="task-desc">Actuellement, tous vos services sont mélangés. Il faut une page dédiée pour : isolation des combles perdus, isolation des combles en rampants, nettoyage toiture/façade, traitement du bois. Chaque page permet à Google de vous trouver sur des recherches précises.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Créer une page "Aides &amp; Financement"</div>
+        <div class="task-desc">C'est une des recherches les plus fréquentes dans votre secteur. Une page dédiée expliquant MaPrimeRénov', les Certificats d'Économies d'Énergie (CEE), la TVA à 5.5% et l'éco-PTZ vous positionnera comme un expert et attirera de nombreux prospects.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Formulaire de demande de devis en ligne</div>
+        <div class="task-desc">Un formulaire simple (prénom, téléphone, type de travaux, code postal) permet de capter les prospects qui ne veulent pas appeler de suite. Ces formulaires peuvent doubler le nombre de contacts entrants selon le secteur.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Ajouter des photos réelles de chantiers</div>
+        <div class="task-desc">Les photos génériques trouvées sur Internet ne rassurent pas. Des photos "avant/après" de vos vrais chantiers sont le meilleur outil de vente. Prenez systématiquement des photos à chaque intervention et publiez-les sur le site et les réseaux.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Afficher vos certifications et preuves de confiance</div>
+        <div class="task-desc">Le label RGE Qualibat doit être visible dès la page d'accueil avec son logo officiel. Ajoutez aussi : nombre de chantiers réalisés, années d'expérience, zones d'intervention. Ces éléments rassurent et déclenchent la prise de contact.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Intégrer vos avis Google directement sur le site</div>
+        <div class="task-desc">Une fois votre campagne d'avis lancée (priorité 1), affichez vos meilleurs avis sur la page d'accueil et les pages services. Les témoignages clients sont l'un des éléments qui convainquent le plus un visiteur hésitant.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Créer des pages locales par ville</div>
+        <div class="task-desc">Les personnes cherchent "isolation combles Bordeaux", "isolation Mérignac", etc. Créer une page par ville de votre zone (Bordeaux, Mérignac, Bruges, Eysines, Pessac, Le Bouscat) multiplie vos chances d'apparaître dans les résultats locaux.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Installer Google Analytics et Google Search Console</div>
+        <div class="task-desc">Ces deux outils gratuits vous permettent de savoir combien de personnes visitent votre site, d'où elles viennent, quelles pages elles consultent, et ce qu'elles font avant de partir. Indispensable pour mesurer les progrès et prendre de bonnes décisions.</div>
+      </div>
+    </div>
+
+    <div class="task-item orange">
+      <div class="task-check orange"></div>
+      <div class="task-content">
+        <div class="task-title">Refonte visuelle de l'identité du site</div>
+        <div class="task-desc">Logo, couleurs, typographie, mise en page : le design doit inspirer confiance et professionnalisme. Un site propre et moderne rassure autant qu'un devis bien présenté. Investir dans la présentation, c'est investir dans votre image.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Audit site web — France Confort Isolation</span>
+    <strong>Priorité 2 — Important (1-3 mois)</strong>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 5 — PRIORITÉ 3 : DÉVELOPPEMENT (3-6 MOIS)
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number" style="background:#27ae60;">3</div>
+    <div>
+      <div class="section-title" style="color:#27ae60;">Priorité 3 — Développement</div>
+      <div class="section-subtitle">Actions de croissance — À réaliser dans les 3 à 6 mois</div>
+    </div>
+  </div>
+
+  <div class="intro-box" style="border-left-color:#27ae60; background:#f5fff8;">
+    Une fois les bases solides, ces actions permettent d'accélérer votre croissance en ligne. Elles demandent plus d'investissement ou de temps, mais ce sont elles qui font passer un artisan de "invisible sur internet" à "référence locale incontournable".
+  </div>
+
+  <div class="task-list">
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Créer un blog avec des articles pratiques</div>
+        <div class="task-desc">Publiez 1 article par mois sur des sujets recherchés par vos clients : "Combien coûte l'isolation des combles en 2026 ?", "Quelles aides pour isoler sa maison à Bordeaux ?", "Comment savoir si mes combles sont bien isolés ?". Ces articles attirent du trafic gratuit sur le long terme.</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Publicité Google Ads locale</div>
+        <div class="task-desc">En parallèle du référencement naturel (qui prend du temps), la publicité Google permet d'apparaître immédiatement en tête de recherche pour "isolation combles Bordeaux". Budget suggéré pour démarrer : 300 à 500 €/mois, avec retour sur investissement mesurable.</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Activer Facebook et Instagram professionnels</div>
+        <div class="task-desc">Publiez vos photos de chantiers avant/après, vos conseils pratiques et vos offres. Le secteur de l'isolation est visuellement très parlant. Ces réseaux renforcent votre crédibilité et peuvent générer des demandes supplémentaires sans coût publicitaire.</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Ajouter une galerie "Réalisations"</div>
+        <div class="task-desc">Une page dédiée avec photos avant/après de vos chantiers, organisée par type de travaux. C'est la preuve concrète de votre savoir-faire. Les prospects qui hésitent entre plusieurs artisans choisissent souvent celui qui montre son travail.</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Optimisation de la vitesse du site</div>
+        <div class="task-desc">Un site qui se charge en moins de 2 secondes est favorisé par Google et retient mieux les visiteurs. Cela passe par la compression des images, le choix de l'hébergement, et quelques optimisations techniques. À confier à un développeur.</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Inscription sur les annuaires professionnels</div>
+        <div class="task-desc">Qualibat.com, Pages Jaunes, Houzz, Habitatpresto, Travaux.com : être présent sur ces plateformes multiplie vos points de contact sur internet et renforce votre crédibilité aux yeux de Google (backlinks).</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Chat ou WhatsApp Business sur le site</div>
+        <div class="task-desc">Un bouton WhatsApp visible sur le site permet aux visiteurs de vous contacter immédiatement sur l'application qu'ils utilisent au quotidien. Très efficace pour les artisans locaux, taux de réponse rapide = meilleure conversion.</div>
+      </div>
+    </div>
+
+    <div class="task-item green">
+      <div class="task-check green"></div>
+      <div class="task-content">
+        <div class="task-title">Maintenance et mises à jour régulières</div>
+        <div class="task-desc">Un site non maintenu devient lent, vulnérable aux hackers, et perd du terrain sur Google. Prévoyez une vérification mensuelle : mises à jour, sauvegardes, nouvelles photos, nouveaux avis. C'est comme l'entretien d'un véhicule.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Audit site web — France Confort Isolation</span>
+    <strong>Priorité 3 — Développement (3-6 mois)</strong>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 6 — STRUCTURE DU SITE CIBLE
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">↗</div>
+    <div>
+      <div class="section-title">Architecture cible du site</div>
+      <div class="section-subtitle">De 2 pages aujourd'hui à une présence complète</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    Votre site n'a aujourd'hui que 2 pages visibles par Google. Pour qu'un site dans votre secteur soit efficace, il faut un minimum de 15 à 20 pages. Chaque page est une "porte d'entrée" supplémentaire pour que des clients potentiels vous trouvent. Voici la structure recommandée :
+  </div>
+
+  <div class="sitemap-box">
+<span class="sm-root">🌐 franceconfortisolation.com</span><br>
+│<br>
+├── <span class="sm-ok">✓</span> / Accueil — <em>à améliorer</em><br>
+│<br>
+├── <span class="sm-new">/services/ <span class="sm-badge">NOUVEAU</span></span><br>
+│   ├── <span class="sm-new">/isolation-combles-perdus/</span><br>
+│   ├── <span class="sm-new">/isolation-combles-rampants/</span><br>
+│   ├── <span class="sm-new">/nettoyage-toiture-facade/</span><br>
+│   └── <span class="sm-new">/traitement-bois/</span><br>
+│<br>
+├── <span class="sm-ok">✓</span> /produits/ — <em>à enrichir</em><br>
+│<br>
+├── <span class="sm-new">/aides-financement/ <span class="sm-badge">PRIORITÉ</span></span><br>
+│   <em style="font-size:8pt;color:#999;">→ MaPrimeRénov', CEE, TVA 5.5%, éco-PTZ</em><br>
+│<br>
+├── <span class="sm-new">/realisations/ <span class="sm-badge">NOUVEAU</span></span><br>
+│   <em style="font-size:8pt;color:#999;">→ Photos avant/après de vos chantiers</em><br>
+│<br>
+├── <span class="sm-new">/zone-intervention/ <span class="sm-badge">SEO LOCAL</span></span><br>
+│   ├── /isolation-bordeaux/<br>
+│   ├── /isolation-merignac/<br>
+│   ├── /isolation-bruges/<br>
+│   └── /isolation-eysines/<br>
+│<br>
+├── <span class="sm-new">/blog/ <span class="sm-badge">PHASE 3</span></span><br>
+│   <em style="font-size:8pt;color:#999;">→ Articles pratiques pour vos clients</em><br>
+│<br>
+├── <span class="sm-new">/a-propos/ <span class="sm-badge">NOUVEAU</span></span><br>
+│   <em style="font-size:8pt;color:#999;">→ Votre histoire, vos certifications, votre équipe</em><br>
+│<br>
+├── <span class="sm-new">/avis-clients/ <span class="sm-badge">NOUVEAU</span></span><br>
+│<br>
+├── <span class="sm-new">/contact/ <span class="sm-badge">NOUVEAU</span></span><br>
+│<br>
+└── /mentions-legales/ — <em>à compléter</em>
+  </div>
+
+  <div style="background:#fff8ef; border:1px solid #ffdda8; border-radius:8px; padding:16px 20px; font-size:9.5pt; color:#8a5a00;">
+    <strong>💡 Pourquoi autant de pages ?</strong><br>
+    Chaque page est indexée séparément par Google. Quelqu'un qui cherche "isolation combles perdus Mérignac" ne tombera pas sur votre page d'accueil générale — il tombera sur votre page dédiée, qui répond exactement à sa recherche. C'est ainsi que les artisans bien référencés capturent des dizaines de clients par mois.
+  </div>
+
+  <div class="footer">
+    <span>Audit site web — France Confort Isolation</span>
+    <strong>Architecture cible</strong>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 7 — PLANNING & BUDGET
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">€</div>
+    <div>
+      <div class="section-title">Planning &amp; Estimation budgétaire</div>
+      <div class="section-subtitle">Feuille de route sur 6 mois</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item red">
+      <div class="timeline-period">Mois 1 — Urgences</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Correction des bases + légal + Google</div>
+        <ul class="timeline-tasks">
+          <li>Débloquer l'indexation Google (erreur 403)</li>
+          <li>Installer le bandeau cookies RGPD</li>
+          <li>Numéro cliquable + bouton devis sur mobile</li>
+          <li>Compléter la fiche Google Business Profile</li>
+          <li>Lancer la campagne d'avis clients (SMS/email)</li>
+          <li>Vérifier et compléter les mentions légales</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item orange">
+      <div class="timeline-period">Mois 2 — Structure</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Création des pages et du contenu essentiel</div>
+        <ul class="timeline-tasks">
+          <li>Créer les pages services (une par prestation)</li>
+          <li>Créer la page "Aides &amp; Financement"</li>
+          <li>Ajouter un formulaire de devis en ligne</li>
+          <li>Prendre des photos de chantiers professionnelles</li>
+          <li>Installer Google Analytics + Search Console</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item orange">
+      <div class="timeline-period">Mois 3 — Image et confiance</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Refonte visuelle et preuves sociales</div>
+        <ul class="timeline-tasks">
+          <li>Refonte du design (logo, couleurs, maquette)</li>
+          <li>Page réalisations avec photos avant/après</li>
+          <li>Intégrer les avis Google sur le site</li>
+          <li>Afficher certifications RGE bien en évidence</li>
+          <li>Pages locales par ville (Bordeaux, Mérignac…)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item green">
+      <div class="timeline-period">Mois 4-6 — Croissance</div>
+      <div class="timeline-content">
+        <div class="timeline-title">SEO, publicité et réseaux sociaux</div>
+        <ul class="timeline-tasks">
+          <li>Lancement du blog (1 article/mois)</li>
+          <li>Campagne Google Ads locale (optionnelle)</li>
+          <li>Activation Facebook / Instagram professionnels</li>
+          <li>Inscription annuaires professionnels (Qualibat, Pages Jaunes…)</li>
+          <li>Optimisation vitesse du site</li>
+          <li>Bouton WhatsApp Business sur le site</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-header" style="margin-top: 30px;">
+    <div class="section-number" style="background:#888;">€</div>
+    <div>
+      <div class="section-title" style="color:#444;">Estimation des investissements</div>
+      <div class="section-subtitle">Fourchettes indicatives — à affiner selon vos prestataires</div>
+    </div>
+  </div>
+
+  <table class="budget-table">
+    <tr>
+      <th>Poste</th>
+      <th>Priorité</th>
+      <th>Estimation</th>
+    </tr>
+    <tr>
+      <td>Correction technique + RGPD (développeur)</td>
+      <td>🔴 Urgent</td>
+      <td>200 – 500 €</td>
+    </tr>
+    <tr>
+      <td>Photos professionnelles de chantiers</td>
+      <td>🟠 Important</td>
+      <td>300 – 600 €</td>
+    </tr>
+    <tr>
+      <td>Refonte du site complet (design + pages)</td>
+      <td>🟠 Important</td>
+      <td>2 000 – 4 000 €</td>
+    </tr>
+    <tr>
+      <td>Rédaction du contenu (pages + blog 6 mois)</td>
+      <td>🟠 Important</td>
+      <td>800 – 1 500 €</td>
+    </tr>
+    <tr>
+      <td>Google Ads locale (6 mois, optionnel)</td>
+      <td>🟢 Croissance</td>
+      <td>1 800 – 3 000 €</td>
+    </tr>
+    <tr>
+      <td>Maintenance annuelle du site</td>
+      <td>🟢 Récurrent</td>
+      <td>500 – 1 200 €/an</td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="2">Total estimé (lancement complet)</td>
+      <td>5 000 – 10 000 €</td>
+    </tr>
+  </table>
+
+  <div style="background:#f8f9ff; border:1px solid #dde3f8; border-radius:8px; padding:16px 20px; font-size:9pt; color:#555; line-height:1.7;">
+    <strong style="color:#0f3460;">Note :</strong> Certaines actions sont gratuites (Google Business Profile, Google Analytics, avis clients, réseaux sociaux). Le budget ci-dessus concerne les interventions nécessitant un prestataire. Les actions en priorité 1 peuvent être réalisées pour moins de 500 €, ce qui représente l'investissement le plus urgent et le plus rentable.
+  </div>
+
+  <div class="footer">
+    <span>Audit site web — France Confort Isolation</span>
+    <strong>Planning &amp; Budget</strong>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 8 — CONCLUSION
+════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">✓</div>
+    <div>
+      <div class="section-title">Conclusion &amp; Prochaines étapes</div>
+      <div class="section-subtitle">Ce qu'il faut retenir</div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom:30px;">
+    <h3>Votre potentiel est réel</h3>
+    <p>France Confort Isolation possède tous les atouts pour dominer son marché local en ligne : certification RGE, zone d'activité en forte demande (Bordeaux métropole), secteur soutenu par les aides de l'État. Il manque uniquement la vitrine digitale à la hauteur de ce potentiel.</p>
+    <div class="highlight-stats">
+      <div class="hs-item">
+        <div class="hs-value">60%</div>
+        <div class="hs-label">Des recherches d'artisans<br>se font sur mobile</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-value">82%</div>
+        <div class="hs-label">Des gens lisent les avis<br>avant de contacter</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-value">3×</div>
+        <div class="hs-label">Plus de leads avec<br>un site bien référencé</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-number" style="background:#e74c3c; font-size:9pt;">TOP 5</div>
+    <div>
+      <div class="section-title">Les 5 actions à faire absolument en premier</div>
+    </div>
+  </div>
+
+  <div class="task-list" style="margin-left:0;">
+    <div class="task-item red" style="padding:14px 16px;">
+      <div style="width:24px;height:24px;background:#e74c3c;color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10pt;flex-shrink:0;">1</div>
+      <div class="task-content">
+        <div class="task-title">Corriger le blocage Google (erreur 403)</div>
+        <div class="task-desc">Sans ça, tout le reste ne sert à rien. Google ne peut pas vous trouver.</div>
+      </div>
+    </div>
+    <div class="task-item red" style="padding:14px 16px;">
+      <div style="width:24px;height:24px;background:#e74c3c;color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10pt;flex-shrink:0;">2</div>
+      <div class="task-content">
+        <div class="task-title">Compléter la fiche Google Business Profile</div>
+        <div class="task-desc">Gratuit et très puissant pour être visible sur Google Maps et les recherches locales.</div>
+      </div>
+    </div>
+    <div class="task-item red" style="padding:14px 16px;">
+      <div style="width:24px;height:24px;background:#e74c3c;color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10pt;flex-shrink:0;">3</div>
+      <div class="task-content">
+        <div class="task-title">Demander des avis à vos clients</div>
+        <div class="task-desc">Envoyez le lien Google à vos 20 derniers clients dès cette semaine. C'est gratuit et immédiatement visible.</div>
+      </div>
+    </div>
+    <div class="task-item red" style="padding:14px 16px;">
+      <div style="width:24px;height:24px;background:#e74c3c;color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10pt;flex-shrink:0;">4</div>
+      <div class="task-content">
+        <div class="task-title">Ajouter un bouton "Devis gratuit" et un téléphone cliquable</div>
+        <div class="task-desc">Modification simple sur le site actuel, impact direct sur les appels entrants.</div>
+      </div>
+    </div>
+    <div class="task-item red" style="padding:14px 16px;">
+      <div style="width:24px;height:24px;background:#e74c3c;color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10pt;flex-shrink:0;">5</div>
+      <div class="task-content">
+        <div class="task-title">Mettre en conformité RGPD (bandeau cookies)</div>
+        <div class="task-desc">Obligation légale. Outil gratuit disponible : Tarteaucitron.js.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px; background:#f0fff6; border:1px solid #b8f0d0; border-radius:10px; padding:20px 24px;">
+    <div style="font-size:11pt; font-weight:700; color:#27ae60; margin-bottom:8px;">Ce document est votre feuille de route</div>
+    <div style="font-size:9.5pt; color:#555; line-height:1.7;">
+      Conservez ce document et utilisez-le comme liste de contrôle. Cochez chaque action au fur et à mesure. Vous n'avez pas besoin de tout faire en même temps — l'essentiel est de commencer par les priorités 1 (rouges), qui sont souvent gratuites ou peu coûteuses, et d'avancer méthodiquement. Dans 6 mois, votre site sera un vrai atout commercial.
+    </div>
+  </div>
+
+  <div class="footer" style="margin-top:40px;">
+    <span>Audit réalisé en mai 2026 — franceconfortisolation.com</span>
+    <span>Document confidentiel — Usage interne</span>
+  </div>
+</div>
+
+</body>
+</html>
